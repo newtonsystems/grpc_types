@@ -12,30 +12,19 @@ jobs:
     working_directory: ~/grpc_types
     steps:
       - checkout
+
       - run:
           name: Build gRPC types from protos
           command: |
             git clone -b $CIRCLE_BRANCH https://github.com/newtonsystems/protos.git
             make all PROTOS_DIR=./protos
+
       - deploy:
           name: Commit auto-generated python gRPC types
           command: |
               git config --global user.email "$GITHUB_EMAIL" > /dev/null 2>&1
               git config --global user.name "$GITHUB_USERNAME" > /dev/null 2>&1
 
-              # stage any changes and new files from python, add commit message
-              # and push
               git add -A python/
-              git commit --allow-empty -m "Auto commit[ci skip] for `cd protos && git log -1 --pretty=short --abbrev-commit`"
+              git commit --allow-empty -m "[ci skip] Auto commit for `cd protos && git log -1 --pretty=short --abbrev-commit`"
               git push origin $CIRCLE_BRANCH
-  build_go:
-    docker:
-      - image: newtonsystems/tools-docker-grpc-tools:0.1.0
-    working_directory: ~/grpc_types
-    steps:
-      - checkout
-      - run:
-          name: Build gRPC types from protos repo
-          command: |
-            git clone -b $CIRCLE_BRANCH https://github.com/newtonsystems/protos.git
-            make all PROTOS_DIR=./protos
