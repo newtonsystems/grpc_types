@@ -13,7 +13,7 @@ jobs:
     steps:
       - checkout:
           post:
-            - git clone -b $CIRCLE_BRANCH https://github.com/newtonsystems/protos.git ../protos
+            - git clone -b $CIRCLE_BRANCH https://github.com/newtonsystems/protos.git
       - run:
           command: |
-            make all
+            make all PROTOS_DIR=./protos
