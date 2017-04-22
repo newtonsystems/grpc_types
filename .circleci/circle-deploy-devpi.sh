@@ -16,11 +16,8 @@ if [ -z "$DEVPI_HOST" ]; then
 fi
 
 # build package and upload to private pypi index
-echo "[distutils]" >> ~/.pypirc
-echo "index-servers = pypi-private" >> ~/.pypirc
-echo "[pypi-private]" >> ~/.pypirc
-echo "repository=https://$DEVPI_HOST" >> ~/.pypirc
-echo "username=$PYPI_USERNAME" >> ~/.pypirc
-echo "password=$PYPI_PASSWORD" >> ~/.pypirc
+devpi use http://$DEVPI_HOST
+devpi login $DEVPI_USERNAME --password $DEVPI_PASSWORD
+devpi use $CIRCLE_PROJECT_USERNAME/$CIRCLE_BRANCH
 
-python setup.py sdist upload -r pypi-private
+devpi upload

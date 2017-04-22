@@ -1,9 +1,11 @@
 from setuptools import setup
 
+from grpc_types import __version__
+
 
 setup(
     name="grpc_types",
-    version="0.1.0",
+    version=__version__,
     description="gRPC interfaces",
     long_description="A package containing all proto buffer message and package definitions.",
     keywords="grpc",
