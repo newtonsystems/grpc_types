@@ -22,8 +22,7 @@ jobs:
           command: |
               git config --global user.email "$GITHUB_EMAIL" > /dev/null 2>&1
               git config --global user.name "$GITHUB_USERNAME" > /dev/null 2>&1
-              git init
-              git remote add --fetch origin "git@github.com:newtonsystems/grpc_types.git"
+
               # stage any changes and new files from python, add commit message
               # and push
               git add -A python/
