@@ -1,18 +1,17 @@
 from setuptools import setup
 
-import django_accounts
 
 setup(
-    name="django-accounts",
+    name="grpc_types",
     version="0.1.0",
-    description="Reusable, generic app for Django",
-    long_description="A basic app perfect for something.",
-    keywords="django",
-    author="James Tarball <james.tarball@gmail.com>",
-    author_email="james.tarball@gmail.com",
-    url="https://github.com/JTarball/django-accounts",
-    license="MIT license",
-    packages=["django_accounts", "django_accounts.registration"],
+    description="gRPC interfaces",
+    long_description="A package containing all proto buffer message and package definitions.",
+    keywords="grpc",
+    author="James Tarball <james.tarball@newtonsystems.co.uk>",
+    author_email="james.tarball@newtonsystems.co.uk",
+    url="https://github.com/newtonsystems/grpc_types",
+    license="newtonsystems",
+    packages=["grpc_types"],
     zip_safe=False,
     include_package_data=True,
     classifiers=[
@@ -21,7 +20,5 @@ setup(
         "Environment :: Web Environment",
         "Programming Language :: Python :: 2.6",
         "Programming Language :: Python :: 2.7",
-        "Framework :: Django",
-        "Framework :: Django :: 1.8",
     ],
 )
