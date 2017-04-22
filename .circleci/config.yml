@@ -1,0 +1,19 @@
+#
+# Circle CI 2.0 Docs
+# 
+# For info, see: https://circleci.com/docs/2.0/
+#
+
+version: 2
+jobs:
+  build:
+    docker:
+      - image: newtonsystems/tools-docker-grpc-tools:0.1.0
+    working_directory: /Users/danvir/Masterbox/sideprojects/github/newtonsystems/grpc_types
+    steps:
+      - checkout:
+          post:
+            - git clone -b $CIRCLE_BRANCH https://github.com/newtonsystems/protos.git ../protos
+      - run:
+          command: |
+            make all
