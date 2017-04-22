@@ -9,7 +9,7 @@ jobs:
   build:
     docker:
       - image: newtonsystems/tools-docker-grpc-tools:0.1.0
-    working_directory: /Users/danvir/Masterbox/sideprojects/github/newtonsystems/grpc_types
+    working_directory: ~/grpc_types
     steps:
       - checkout:
           post:
