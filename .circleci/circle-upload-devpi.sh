@@ -15,11 +15,6 @@ if [ -z "$DEVPI_HOST" ]; then
     exit 1
 fi
 
-if [ ! -f setup.py ]; then
-    echo "There must be a setup.py in the working directory"
-    exit 1
-fi
-
 
 # build package and upload to private pypi index
 devpi use http://$DEVPI_HOST
