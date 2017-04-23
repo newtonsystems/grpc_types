@@ -2,18 +2,24 @@
 
 if [ -z "$DEVPI_USERNAME" ]; then
     echo "You have not set the environment variable DEVPI_USERNAME"
-    exit
+    exit 1
 fi
 
 if [ -z "$DEVPI_PASSWORD" ]; then
     echo "You have not set the environment variable DEVPI_USERNAME"
-    exit
+    exit 1
 fi
 
 if [ -z "$DEVPI_HOST" ]; then
     echo "You have not set the environment variable DEVPI_HOST"
-    exit
+    exit 1
 fi
+
+if [ ! -f "setup.py" ]; then
+    echo "There must be a setup.py in the working directory"
+    exit 1
+fi
+
 
 # build package and upload to private pypi index
 devpi use http://$DEVPI_HOST

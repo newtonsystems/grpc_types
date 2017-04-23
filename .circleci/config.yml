@@ -29,3 +29,9 @@ jobs:
               # Only Commit & Push if there are changes
               git diff --quiet && git diff --staged --quiet || git commit --allow-empty -m "[ci skip] Auto commit for `cd protos && git log -1 --pretty=short --abbrev-commit`"
               git diff --quiet && git diff --staged --quiet || git push origin $CIRCLE_BRANCH
+
+      - deploy:
+          name: Deploy python package to devpi 
+          command: |
+              # Only Commit & Push if there are changes
+              git diff --quiet && git diff --staged --quiet || cd python && ../.circleci/circle-upload-devpi.sh
