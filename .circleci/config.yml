@@ -33,5 +33,8 @@ jobs:
       - deploy:
           name: Deploy python package to devpi 
           command: |
-              # Only Commit & Push if there are changes
-              git diff --quiet && git diff --staged --quiet || cd python && ./.circleci/circle-upload-devpi.sh
+            if [ $(git diff --quiet && git diff --staged --quiet) != "" ]; then
+              cd python
+              ../.circleci/circle-upload-devpi.sh
+            fi
+
