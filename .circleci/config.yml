@@ -35,6 +35,8 @@ jobs:
       - deploy:
           name: Deploy python package to devpi 
           command: |
+              # NOTE: At the moment even no changes are packaged up into
+              #       a new python devpi package
               cd python
               ../.circleci/circle-upload-devpi.sh
 
