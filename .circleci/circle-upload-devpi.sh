@@ -15,7 +15,7 @@ if [ -z "$DEVPI_HOST" ]; then
     exit 1
 fi
 
-if [ ! -f "setup.py" ]; then
+if [ ! -f setup.py ]; then
     echo "There must be a setup.py in the working directory"
     exit 1
 fi
