@@ -16,7 +16,7 @@ if [ -z "$DEVPI_HOST" ]; then
 fi
 
 # Lazy python sorry chap!
-$VERSION = $(python -c "import os; from grpc_types import __version__; major, minor, patch = __version__.split('.'); print '%s.%s.dev%s' % (major, minor, os.getenv('CIRCLE_BUILD_NUM'))")
+VERSION=$(python -c "import os; from grpc_types import __version__; major, minor, patch = __version__.split('.'); print '%s.%s.dev%s' % (major, minor, os.getenv('CIRCLE_BUILD_NUM'))")
 
 echo -e "__version__ = '$VERSION'" > grpc_types/__init__.py
 
