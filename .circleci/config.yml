@@ -27,10 +27,8 @@ jobs:
 
               git add -A python/
               # Only Commit & Push if there are changes
-              if [ "$(git diff --quiet && git diff --staged --quiet)" != "" ]; then
-                  git commit --allow-empty -m "[ci skip] Auto commit for `cd protos && git log -1 --pretty=short --abbrev-commit`"
-                  git push origin $CIRCLE_BRANCH
-              fi
+              git commit --allow-empty -m "[ci skip] Auto commit for `cd protos && git log -1 --pretty=short --abbrev-commit`"
+              git push origin $CIRCLE_BRANCH
 
       - deploy:
           name: Deploy python package to devpi 
