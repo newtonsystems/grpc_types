@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='world.proto',
   package='world',
   syntax='proto3',
-  serialized_pb=_b('\n\x0bworld.proto\x12\x05world\"\x0e\n\x0cWorldRequest\"\x1f\n\x0cWordResponse\x12\x0f\n\x07message\x18\x01 \x01(\t2?\n\x05World\x12\x36\n\x08sayWorld\x12\x13.world.WorldRequest\x1a\x13.world.WordResponse\"\x00\x62\x06proto3')
+  serialized_pb=_b('\n\x0bworld.proto\x12\x05world\"\x1f\n\x0cWorldRequest\x12\x0f\n\x07message\x18\x01 \x01(\t\"\x1f\n\x0cWordResponse\x12\x0f\n\x07message\x18\x01 \x01(\t2?\n\x05World\x12\x36\n\x08sayWorld\x12\x13.world.WorldRequest\x1a\x13.world.WordResponse\"\x00\x62\x06proto3')
 )
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -33,6 +33,13 @@ _WORLDREQUEST = _descriptor.Descriptor(
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
+    _descriptor.FieldDescriptor(
+      name='message', full_name='world.WorldRequest.message', index=0,
+      number=1, type=9, cpp_type=9, label=1,
+      has_default_value=False, default_value=_b("").decode('utf-8'),
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -46,7 +53,7 @@ _WORLDREQUEST = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=22,
-  serialized_end=36,
+  serialized_end=53,
 )
 
 
@@ -76,8 +83,8 @@ _WORDRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=38,
-  serialized_end=69,
+  serialized_start=55,
+  serialized_end=86,
 )
 
 DESCRIPTOR.message_types_by_name['WorldRequest'] = _WORLDREQUEST
