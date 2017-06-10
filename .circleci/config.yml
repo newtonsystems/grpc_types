@@ -14,6 +14,15 @@ jobs:
       - checkout
 
       - run:
+          name: Clone devops repo (Update the submodule to the latest change)
+          command: |
+            git clone -b $CIRCLE_BRANCH https://github.com/newtonsystems/devops.git
+            cd devops
+            git submodule sync
+            git submodule update --init
+            git submodule foreach git pull origin $CIRCLE_BRANCH
+
+      - run:
           name: Build gRPC types from protos
           command: |
             git clone -b $CIRCLE_BRANCH https://github.com/newtonsystems/protos.git
@@ -38,5 +47,5 @@ jobs:
               # NOTE: At the moment even no changes are packaged up into
               #       a new python devpi package
               cd python
-              ../.circleci/circle-upload-devpi.sh
+              ../devops/scripts/circle-upload-devpi.sh
 
