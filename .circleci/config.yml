@@ -13,6 +13,14 @@ jobs:
     steps:
       - checkout
 
+      # Install Python py.test tools. (TODO: Skip install if already in cache.)
+      - run:
+          name: Install python requirements for deploy docs
+          command: |
+            pip install sphinx
+            pip install sphinx_rtd_theme
+            pip install sphinx_git
+
       - run:
           name: Clone devops repo (Update the submodule to the latest change)
           command: |
