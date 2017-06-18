@@ -1,7 +1,10 @@
 # grpc_types
 
-[![CircleCI](https://circleci.com/gh/newtonsystems/grpc_types.svg?style=svg)](https://circleci.com/gh/newtonsystems/grpc_types)
+### master
+[![CircleCI](https://circleci.com/gh/newtonsystems/grpc_types/tree/master.svg?style=svg)](https://circleci.com/gh/newtonsystems/grpc_types/tree/master)
 
+### featuretest
+[![CircleCI](https://circleci.com/gh/newtonsystems/grpc_types/tree/featuretest.svg?style=svg)](https://circleci.com/gh/newtonsystems/grpc_types/tree/featuretest)
 
 A repository containing all proto buffer message and package definitions.
 
