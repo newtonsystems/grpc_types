@@ -37,14 +37,15 @@ jobs:
             make all PROTOS_DIR=./protos
 
       - deploy:
-          name: Commit auto-generated python gRPC types
+          name: Commit auto-generated python and go gRPC types
           command: |
               git config --global user.email "$GITHUB_EMAIL" > /dev/null 2>&1
               git config --global user.name "$GITHUB_USERNAME" > /dev/null 2>&1
 
               # Only Commit & Push if there are changes
-              if [[ `git status --porcelain python/` ]]; then
+              if [[ `git status --porcelain python/` || `git status --porcelain go/` ]]; then
                   git add -A python/
+                  git add -A go/
                   git commit --allow-empty -m "[ci skip] Auto commit for `cd protos && git log -1 --pretty=short --abbrev-commit`"
                   git push origin $CIRCLE_BRANCH
               fi
