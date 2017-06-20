@@ -12,6 +12,8 @@ These files are auto generated and should NOT be edited manually.
 
 `Automatically Triggered & Updated via circleci`
 
+creates python and go bindings
+
 
 # Quick Start 
 
