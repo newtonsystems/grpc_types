@@ -23,6 +23,7 @@ build_python:
 
 build_go:
 	@echo "$(INFO) Building go Files from .protos"
+	mkdir -p go/grpc_types
 	@for proto_file in $(PROTOS_DIR)/*.proto; do \
 		echo "$(INFO) Found $$proto_file. Processing for package grpc_types ..."; \
 		protoc -I $(PROTOS_DIR) $$proto_file --go_out=plugins=grpc:go/grpc_types; \
