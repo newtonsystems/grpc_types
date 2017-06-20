@@ -14,8 +14,8 @@ package globalapi
 import proto "github.com/golang/protobuf/proto"
 import fmt "fmt"
 import math "math"
-import _ "."
-import _ "."
+import hello "."
+import world "."
 
 // Reference imports to suppress errors if they are not otherwise used.
 var _ = proto.Marshal
@@ -28,13 +28,45 @@ var _ = math.Inf
 // proto package needs to be updated.
 const _ = proto.ProtoPackageIsVersion2 // please upgrade the proto package
 
+// HelloRequest from public import hello.proto
+type HelloRequest hello.HelloRequest
+
+func (m *HelloRequest) Reset()          { (*hello.HelloRequest)(m).Reset() }
+func (m *HelloRequest) String() string  { return (*hello.HelloRequest)(m).String() }
+func (*HelloRequest) ProtoMessage()     {}
+func (m *HelloRequest) GetName() string { return (*hello.HelloRequest)(m).GetName() }
+
+// HelloReply from public import hello.proto
+type HelloReply hello.HelloReply
+
+func (m *HelloReply) Reset()             { (*hello.HelloReply)(m).Reset() }
+func (m *HelloReply) String() string     { return (*hello.HelloReply)(m).String() }
+func (*HelloReply) ProtoMessage()        {}
+func (m *HelloReply) GetMessage() string { return (*hello.HelloReply)(m).GetMessage() }
+
+// WorldRequest from public import world.proto
+type WorldRequest world.WorldRequest
+
+func (m *WorldRequest) Reset()             { (*world.WorldRequest)(m).Reset() }
+func (m *WorldRequest) String() string     { return (*world.WorldRequest)(m).String() }
+func (*WorldRequest) ProtoMessage()        {}
+func (m *WorldRequest) GetMessage() string { return (*world.WorldRequest)(m).GetMessage() }
+
+// WordResponse from public import world.proto
+type WordResponse world.WordResponse
+
+func (m *WordResponse) Reset()             { (*world.WordResponse)(m).Reset() }
+func (m *WordResponse) String() string     { return (*world.WordResponse)(m).String() }
+func (*WordResponse) ProtoMessage()        {}
+func (m *WordResponse) GetMessage() string { return (*world.WordResponse)(m).GetMessage() }
+
 func init() { proto.RegisterFile("globalapi.proto", fileDescriptor0) }
 
 var fileDescriptor0 = []byte{
-	// 67 bytes of a gzipped FileDescriptorProto
+	// 71 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0xe2, 0x4f, 0xcf, 0xc9, 0x4f,
 	0x4a, 0xcc, 0x49, 0x2c, 0xc8, 0xd4, 0x2b, 0x28, 0xca, 0x2f, 0xc9, 0x17, 0xe2, 0x84, 0x0b, 0x48,
 	0x71, 0x67, 0xa4, 0xe6, 0xe4, 0xe4, 0x43, 0xc4, 0xa5, 0xb8, 0xcb, 0xf3, 0x8b, 0x72, 0x52, 0x20,
-	0x9c, 0x24, 0x36, 0x30, 0x65, 0x0c, 0x08, 0x00, 0x00, 0xff, 0xff, 0x52, 0xe4, 0x66, 0x46, 0x3e,
-	0x00, 0x00, 0x00,
+	0x9c, 0x00, 0x86, 0x00, 0xc6, 0x24, 0x36, 0x30, 0xd3, 0x18, 0x10, 0x00, 0x00, 0xff, 0xff, 0x16,
+	0xf2, 0x8e, 0xce, 0x42, 0x00, 0x00, 0x00,
 }

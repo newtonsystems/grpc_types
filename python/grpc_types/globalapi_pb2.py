@@ -16,14 +16,17 @@ _sym_db = _symbol_database.Default()
 import hello_pb2 as hello__pb2
 import world_pb2 as world__pb2
 
+from hello_pb2 import *
+from world_pb2 import *
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='globalapi.proto',
   package='globalapi',
   syntax='proto3',
-  serialized_pb=_b('\n\x0fglobalapi.proto\x12\tglobalapi\x1a\x0bhello.proto\x1a\x0bworld.protob\x06proto3')
+  serialized_pb=_b('\n\x0fglobalapi.proto\x12\tglobalapi\x1a\x0bhello.proto\x1a\x0bworld.protoP\x00P\x01\x62\x06proto3')
   ,
-  dependencies=[hello__pb2.DESCRIPTOR,world__pb2.DESCRIPTOR,])
+  dependencies=[hello__pb2.DESCRIPTOR,world__pb2.DESCRIPTOR,],
+  public_dependencies=[hello__pb2.DESCRIPTOR,world__pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 
