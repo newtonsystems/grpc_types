@@ -19,9 +19,9 @@ import world_pb2 as world__pb2
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='globalapi.proto',
-  package='hello',
+  package='globalapi',
   syntax='proto3',
-  serialized_pb=_b('\n\x0fglobalapi.proto\x12\x05hello\x1a\x0bhello.proto\x1a\x0bworld.protob\x06proto3')
+  serialized_pb=_b('\n\x0fglobalapi.proto\x12\tglobalapi\x1a\x0bhello.proto\x1a\x0bworld.protob\x06proto3')
   ,
   dependencies=[hello__pb2.DESCRIPTOR,world__pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
