@@ -13,7 +13,7 @@ class WorldStub(object):
       channel: A grpc.Channel.
     """
     self.sayWorld = channel.unary_unary(
-        '/world.World/sayWorld',
+        '/grpc_types.World/sayWorld',
         request_serializer=world__pb2.WorldRequest.SerializeToString,
         response_deserializer=world__pb2.WordResponse.FromString,
         )
@@ -38,5 +38,5 @@ def add_WorldServicer_to_server(servicer, server):
       ),
   }
   generic_handler = grpc.method_handlers_generic_handler(
-      'world.World', rpc_method_handlers)
+      'grpc_types.World', rpc_method_handlers)
   server.add_generic_rpc_handlers((generic_handler,))

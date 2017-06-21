@@ -17,9 +17,9 @@ _sym_db = _symbol_database.Default()
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='world.proto',
-  package='world',
+  package='grpc_types',
   syntax='proto3',
-  serialized_pb=_b('\n\x0bworld.proto\x12\x05world\"\x1f\n\x0cWorldRequest\x12\x0f\n\x07message\x18\x01 \x01(\t\"\x1f\n\x0cWordResponse\x12\x0f\n\x07message\x18\x01 \x01(\t2?\n\x05World\x12\x36\n\x08sayWorld\x12\x13.world.WorldRequest\x1a\x13.world.WordResponse\"\x00\x62\x06proto3')
+  serialized_pb=_b('\n\x0bworld.proto\x12\ngrpc_types\"\x1f\n\x0cWorldRequest\x12\x0f\n\x07message\x18\x01 \x01(\t\"\x1f\n\x0cWordResponse\x12\x0f\n\x07message\x18\x01 \x01(\t2I\n\x05World\x12@\n\x08sayWorld\x12\x18.grpc_types.WorldRequest\x1a\x18.grpc_types.WordResponse\"\x00\x62\x06proto3')
 )
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -28,13 +28,13 @@ _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 _WORLDREQUEST = _descriptor.Descriptor(
   name='WorldRequest',
-  full_name='world.WorldRequest',
+  full_name='grpc_types.WorldRequest',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='message', full_name='world.WorldRequest.message', index=0,
+      name='message', full_name='grpc_types.WorldRequest.message', index=0,
       number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
@@ -52,20 +52,20 @@ _WORLDREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=22,
-  serialized_end=53,
+  serialized_start=27,
+  serialized_end=58,
 )
 
 
 _WORDRESPONSE = _descriptor.Descriptor(
   name='WordResponse',
-  full_name='world.WordResponse',
+  full_name='grpc_types.WordResponse',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='message', full_name='world.WordResponse.message', index=0,
+      name='message', full_name='grpc_types.WordResponse.message', index=0,
       number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
@@ -83,8 +83,8 @@ _WORDRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=55,
-  serialized_end=86,
+  serialized_start=60,
+  serialized_end=91,
 )
 
 DESCRIPTOR.message_types_by_name['WorldRequest'] = _WORLDREQUEST
@@ -93,14 +93,14 @@ DESCRIPTOR.message_types_by_name['WordResponse'] = _WORDRESPONSE
 WorldRequest = _reflection.GeneratedProtocolMessageType('WorldRequest', (_message.Message,), dict(
   DESCRIPTOR = _WORLDREQUEST,
   __module__ = 'world_pb2'
-  # @@protoc_insertion_point(class_scope:world.WorldRequest)
+  # @@protoc_insertion_point(class_scope:grpc_types.WorldRequest)
   ))
 _sym_db.RegisterMessage(WorldRequest)
 
 WordResponse = _reflection.GeneratedProtocolMessageType('WordResponse', (_message.Message,), dict(
   DESCRIPTOR = _WORDRESPONSE,
   __module__ = 'world_pb2'
-  # @@protoc_insertion_point(class_scope:world.WordResponse)
+  # @@protoc_insertion_point(class_scope:grpc_types.WordResponse)
   ))
 _sym_db.RegisterMessage(WordResponse)
 
@@ -124,7 +124,7 @@ try:
         channel: A grpc.Channel.
       """
       self.sayWorld = channel.unary_unary(
-          '/world.World/sayWorld',
+          '/grpc_types.World/sayWorld',
           request_serializer=WorldRequest.SerializeToString,
           response_deserializer=WordResponse.FromString,
           )
@@ -149,7 +149,7 @@ try:
         ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
-        'world.World', rpc_method_handlers)
+        'grpc_types.World', rpc_method_handlers)
     server.add_generic_rpc_handlers((generic_handler,))
 
 
@@ -185,13 +185,13 @@ try:
     file not marked beta) for all further purposes. This function was
     generated only to ease transition from grpcio<0.15.0 to grpcio>=0.15.0"""
     request_deserializers = {
-      ('world.World', 'sayWorld'): WorldRequest.FromString,
+      ('grpc_types.World', 'sayWorld'): WorldRequest.FromString,
     }
     response_serializers = {
-      ('world.World', 'sayWorld'): WordResponse.SerializeToString,
+      ('grpc_types.World', 'sayWorld'): WordResponse.SerializeToString,
     }
     method_implementations = {
-      ('world.World', 'sayWorld'): face_utilities.unary_unary_inline(servicer.sayWorld),
+      ('grpc_types.World', 'sayWorld'): face_utilities.unary_unary_inline(servicer.sayWorld),
     }
     server_options = beta_implementations.server_options(request_deserializers=request_deserializers, response_serializers=response_serializers, thread_pool=pool, thread_pool_size=pool_size, default_timeout=default_timeout, maximum_timeout=maximum_timeout)
     return beta_implementations.server(method_implementations, options=server_options)
@@ -204,16 +204,16 @@ try:
     file not marked beta) for all further purposes. This function was
     generated only to ease transition from grpcio<0.15.0 to grpcio>=0.15.0"""
     request_serializers = {
-      ('world.World', 'sayWorld'): WorldRequest.SerializeToString,
+      ('grpc_types.World', 'sayWorld'): WorldRequest.SerializeToString,
     }
     response_deserializers = {
-      ('world.World', 'sayWorld'): WordResponse.FromString,
+      ('grpc_types.World', 'sayWorld'): WordResponse.FromString,
     }
     cardinalities = {
       'sayWorld': cardinality.Cardinality.UNARY_UNARY,
     }
     stub_options = beta_implementations.stub_options(host=host, metadata_transformer=metadata_transformer, request_serializers=request_serializers, response_deserializers=response_deserializers, thread_pool=pool, thread_pool_size=pool_size)
-    return beta_implementations.dynamic_stub(channel, 'world.World', cardinalities, options=stub_options)
+    return beta_implementations.dynamic_stub(channel, 'grpc_types.World', cardinalities, options=stub_options)
 except ImportError:
   pass
 # @@protoc_insertion_point(module_scope)
