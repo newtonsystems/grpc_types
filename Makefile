@@ -23,10 +23,6 @@ build_python:
 
 build_go:
 	@echo "$(INFO) Building go Files from .protos"
-	@for proto_file in $(PROTOS_DIR)/*.proto; do \
-		PACKAGE_NAME=`basename $$proto_file .proto`; \
-		echo "$(INFO) Found $$proto_file. Processing $$PACKAGE_NAME ..."; \
-		mkdir -p go/$$PACKAGE_NAME; \
-		protoc -I $(PROTOS_DIR) $$proto_file --go_out=plugins=grpc:go/$$PACKAGE_NAME; \
-	done
+	mkdir -p go/grpc_types
+	protoc -I $(PROTOS_DIR) $(PROTOS_DIR)/hello.proto $(PROTOS_DIR)/world.proto --go_out=plugins=grpc:go/grpc_types
 
