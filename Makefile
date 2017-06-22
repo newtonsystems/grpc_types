@@ -24,5 +24,9 @@ build_python:
 build_go:
 	@echo "$(INFO) Building go Files from .protos"
 	mkdir -p go/grpc_types
-	protoc -I $(PROTOS_DIR) $(PROTOS_DIR)/hello.proto $(PROTOS_DIR)/world.proto --go_out=plugins=grpc:go/grpc_types
+	protoc -I $(PROTOS_DIR) \
+		$(PROTOS_DIR)/globalapi.proto \
+		$(PROTOS_DIR)/hello.proto \
+		$(PROTOS_DIR)/world.proto \
+		--go_out=plugins=grpc:go/grpc_types
 
