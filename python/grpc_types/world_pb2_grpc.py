@@ -15,7 +15,7 @@ class WorldStub(object):
     self.sayWorld = channel.unary_unary(
         '/grpc_types.World/sayWorld',
         request_serializer=world__pb2.WorldRequest.SerializeToString,
-        response_deserializer=world__pb2.WordResponse.FromString,
+        response_deserializer=world__pb2.WorldResponse.FromString,
         )
 
 
@@ -34,7 +34,7 @@ def add_WorldServicer_to_server(servicer, server):
       'sayWorld': grpc.unary_unary_rpc_method_handler(
           servicer.sayWorld,
           request_deserializer=world__pb2.WorldRequest.FromString,
-          response_serializer=world__pb2.WordResponse.SerializeToString,
+          response_serializer=world__pb2.WorldResponse.SerializeToString,
       ),
   }
   generic_handler = grpc.method_handlers_generic_handler(

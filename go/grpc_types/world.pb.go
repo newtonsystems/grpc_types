@@ -24,7 +24,7 @@ type WorldRequest struct {
 func (m *WorldRequest) Reset()                    { *m = WorldRequest{} }
 func (m *WorldRequest) String() string            { return proto.CompactTextString(m) }
 func (*WorldRequest) ProtoMessage()               {}
-func (*WorldRequest) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{0} }
+func (*WorldRequest) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{0} }
 
 func (m *WorldRequest) GetMessage() string {
 	if m != nil {
@@ -34,16 +34,16 @@ func (m *WorldRequest) GetMessage() string {
 }
 
 // The response message containing the world greetings
-type WordResponse struct {
+type WorldResponse struct {
 	Message string `protobuf:"bytes,1,opt,name=message" json:"message,omitempty"`
 }
 
-func (m *WordResponse) Reset()                    { *m = WordResponse{} }
-func (m *WordResponse) String() string            { return proto.CompactTextString(m) }
-func (*WordResponse) ProtoMessage()               {}
-func (*WordResponse) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{1} }
+func (m *WorldResponse) Reset()                    { *m = WorldResponse{} }
+func (m *WorldResponse) String() string            { return proto.CompactTextString(m) }
+func (*WorldResponse) ProtoMessage()               {}
+func (*WorldResponse) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{1} }
 
-func (m *WordResponse) GetMessage() string {
+func (m *WorldResponse) GetMessage() string {
 	if m != nil {
 		return m.Message
 	}
@@ -52,7 +52,7 @@ func (m *WordResponse) GetMessage() string {
 
 func init() {
 	proto.RegisterType((*WorldRequest)(nil), "grpc_types.WorldRequest")
-	proto.RegisterType((*WordResponse)(nil), "grpc_types.WordResponse")
+	proto.RegisterType((*WorldResponse)(nil), "grpc_types.WorldResponse")
 }
 
 // Reference imports to suppress errors if they are not otherwise used.
@@ -67,7 +67,7 @@ const _ = grpc.SupportPackageIsVersion4
 
 type WorldClient interface {
 	// World service
-	SayWorld(ctx context.Context, in *WorldRequest, opts ...grpc.CallOption) (*WordResponse, error)
+	SayWorld(ctx context.Context, in *WorldRequest, opts ...grpc.CallOption) (*WorldResponse, error)
 }
 
 type worldClient struct {
@@ -78,8 +78,8 @@ func NewWorldClient(cc *grpc.ClientConn) WorldClient {
 	return &worldClient{cc}
 }
 
-func (c *worldClient) SayWorld(ctx context.Context, in *WorldRequest, opts ...grpc.CallOption) (*WordResponse, error) {
-	out := new(WordResponse)
+func (c *worldClient) SayWorld(ctx context.Context, in *WorldRequest, opts ...grpc.CallOption) (*WorldResponse, error) {
+	out := new(WorldResponse)
 	err := grpc.Invoke(ctx, "/grpc_types.World/sayWorld", in, out, c.cc, opts...)
 	if err != nil {
 		return nil, err
@@ -91,7 +91,7 @@ func (c *worldClient) SayWorld(ctx context.Context, in *WorldRequest, opts ...gr
 
 type WorldServer interface {
 	// World service
-	SayWorld(context.Context, *WorldRequest) (*WordResponse, error)
+	SayWorld(context.Context, *WorldRequest) (*WorldResponse, error)
 }
 
 func RegisterWorldServer(s *grpc.Server, srv WorldServer) {
@@ -129,17 +129,17 @@ var _World_serviceDesc = grpc.ServiceDesc{
 	Metadata: "world.proto",
 }
 
-func init() { proto.RegisterFile("world.proto", fileDescriptor1) }
+func init() { proto.RegisterFile("world.proto", fileDescriptor2) }
 
-var fileDescriptor1 = []byte{
-	// 131 bytes of a gzipped FileDescriptorProto
+var fileDescriptor2 = []byte{
+	// 133 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0xe2, 0x2e, 0xcf, 0x2f, 0xca,
 	0x49, 0xd1, 0x2b, 0x28, 0xca, 0x2f, 0xc9, 0x17, 0xe2, 0x4a, 0x2f, 0x2a, 0x48, 0x8e, 0x2f, 0xa9,
 	0x2c, 0x48, 0x2d, 0x56, 0xd2, 0xe0, 0xe2, 0x09, 0x07, 0x49, 0x05, 0xa5, 0x16, 0x96, 0xa6, 0x16,
 	0x97, 0x08, 0x49, 0x70, 0xb1, 0xe7, 0xa6, 0x16, 0x17, 0x27, 0xa6, 0xa7, 0x4a, 0x30, 0x2a, 0x30,
-	0x6a, 0x70, 0x06, 0xc1, 0xb8, 0x50, 0x95, 0x29, 0x41, 0xa9, 0xc5, 0x05, 0xf9, 0x79, 0xc5, 0xa9,
-	0xb8, 0x55, 0x1a, 0x79, 0x72, 0xb1, 0x82, 0xcd, 0x14, 0x72, 0xe0, 0xe2, 0x28, 0x4e, 0xac, 0x84,
-	0xb0, 0x25, 0xf4, 0x10, 0xb6, 0xea, 0x21, 0x5b, 0x29, 0x85, 0x2e, 0x03, 0xb7, 0x42, 0x89, 0x21,
-	0x89, 0x0d, 0xec, 0x62, 0x63, 0x40, 0x00, 0x00, 0x00, 0xff, 0xff, 0xf1, 0x30, 0x65, 0x67, 0xc0,
-	0x00, 0x00, 0x00,
+	0x6a, 0x70, 0x06, 0xc1, 0xb8, 0x4a, 0x9a, 0x5c, 0xbc, 0x50, 0x95, 0xc5, 0x05, 0xf9, 0x79, 0xc5,
+	0xa9, 0xb8, 0x95, 0x1a, 0x79, 0x71, 0xb1, 0x82, 0x95, 0x0a, 0x39, 0x72, 0x71, 0x14, 0x27, 0x56,
+	0x42, 0xd8, 0x12, 0x7a, 0x08, 0x6b, 0xf5, 0x90, 0xed, 0x94, 0x92, 0xc4, 0x22, 0x03, 0xb1, 0x43,
+	0x89, 0x21, 0x89, 0x0d, 0xec, 0x66, 0x63, 0x40, 0x00, 0x00, 0x00, 0xff, 0xff, 0xc2, 0xb9, 0x8a,
+	0xef, 0xc2, 0x00, 0x00, 0x00,
 }

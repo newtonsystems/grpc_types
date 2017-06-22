@@ -15,7 +15,7 @@ class HelloStub(object):
     self.sayHello = channel.unary_unary(
         '/grpc_types.Hello/sayHello',
         request_serializer=hello__pb2.HelloRequest.SerializeToString,
-        response_deserializer=hello__pb2.HelloReply.FromString,
+        response_deserializer=hello__pb2.HelloResponse.FromString,
         )
 
 
@@ -34,7 +34,7 @@ def add_HelloServicer_to_server(servicer, server):
       'sayHello': grpc.unary_unary_rpc_method_handler(
           servicer.sayHello,
           request_deserializer=hello__pb2.HelloRequest.FromString,
-          response_serializer=hello__pb2.HelloReply.SerializeToString,
+          response_serializer=hello__pb2.HelloResponse.SerializeToString,
       ),
   }
   generic_handler = grpc.method_handlers_generic_handler(

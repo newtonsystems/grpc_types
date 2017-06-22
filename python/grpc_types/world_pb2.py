@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='world.proto',
   package='grpc_types',
   syntax='proto3',
-  serialized_pb=_b('\n\x0bworld.proto\x12\ngrpc_types\"\x1f\n\x0cWorldRequest\x12\x0f\n\x07message\x18\x01 \x01(\t\"\x1f\n\x0cWordResponse\x12\x0f\n\x07message\x18\x01 \x01(\t2I\n\x05World\x12@\n\x08sayWorld\x12\x18.grpc_types.WorldRequest\x1a\x18.grpc_types.WordResponse\"\x00\x62\x06proto3')
+  serialized_pb=_b('\n\x0bworld.proto\x12\ngrpc_types\"\x1f\n\x0cWorldRequest\x12\x0f\n\x07message\x18\x01 \x01(\t\" \n\rWorldResponse\x12\x0f\n\x07message\x18\x01 \x01(\t2J\n\x05World\x12\x41\n\x08sayWorld\x12\x18.grpc_types.WorldRequest\x1a\x19.grpc_types.WorldResponse\"\x00\x62\x06proto3')
 )
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -57,15 +57,15 @@ _WORLDREQUEST = _descriptor.Descriptor(
 )
 
 
-_WORDRESPONSE = _descriptor.Descriptor(
-  name='WordResponse',
-  full_name='grpc_types.WordResponse',
+_WORLDRESPONSE = _descriptor.Descriptor(
+  name='WorldResponse',
+  full_name='grpc_types.WorldResponse',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='message', full_name='grpc_types.WordResponse.message', index=0,
+      name='message', full_name='grpc_types.WorldResponse.message', index=0,
       number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
@@ -84,11 +84,11 @@ _WORDRESPONSE = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=60,
-  serialized_end=91,
+  serialized_end=92,
 )
 
 DESCRIPTOR.message_types_by_name['WorldRequest'] = _WORLDREQUEST
-DESCRIPTOR.message_types_by_name['WordResponse'] = _WORDRESPONSE
+DESCRIPTOR.message_types_by_name['WorldResponse'] = _WORLDRESPONSE
 
 WorldRequest = _reflection.GeneratedProtocolMessageType('WorldRequest', (_message.Message,), dict(
   DESCRIPTOR = _WORLDREQUEST,
@@ -97,12 +97,12 @@ WorldRequest = _reflection.GeneratedProtocolMessageType('WorldRequest', (_messag
   ))
 _sym_db.RegisterMessage(WorldRequest)
 
-WordResponse = _reflection.GeneratedProtocolMessageType('WordResponse', (_message.Message,), dict(
-  DESCRIPTOR = _WORDRESPONSE,
+WorldResponse = _reflection.GeneratedProtocolMessageType('WorldResponse', (_message.Message,), dict(
+  DESCRIPTOR = _WORLDRESPONSE,
   __module__ = 'world_pb2'
-  # @@protoc_insertion_point(class_scope:grpc_types.WordResponse)
+  # @@protoc_insertion_point(class_scope:grpc_types.WorldResponse)
   ))
-_sym_db.RegisterMessage(WordResponse)
+_sym_db.RegisterMessage(WorldResponse)
 
 
 try:
@@ -126,7 +126,7 @@ try:
       self.sayWorld = channel.unary_unary(
           '/grpc_types.World/sayWorld',
           request_serializer=WorldRequest.SerializeToString,
-          response_deserializer=WordResponse.FromString,
+          response_deserializer=WorldResponse.FromString,
           )
 
 
@@ -145,7 +145,7 @@ try:
         'sayWorld': grpc.unary_unary_rpc_method_handler(
             servicer.sayWorld,
             request_deserializer=WorldRequest.FromString,
-            response_serializer=WordResponse.SerializeToString,
+            response_serializer=WorldResponse.SerializeToString,
         ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -188,7 +188,7 @@ try:
       ('grpc_types.World', 'sayWorld'): WorldRequest.FromString,
     }
     response_serializers = {
-      ('grpc_types.World', 'sayWorld'): WordResponse.SerializeToString,
+      ('grpc_types.World', 'sayWorld'): WorldResponse.SerializeToString,
     }
     method_implementations = {
       ('grpc_types.World', 'sayWorld'): face_utilities.unary_unary_inline(servicer.sayWorld),
@@ -207,7 +207,7 @@ try:
       ('grpc_types.World', 'sayWorld'): WorldRequest.SerializeToString,
     }
     response_deserializers = {
-      ('grpc_types.World', 'sayWorld'): WordResponse.FromString,
+      ('grpc_types.World', 'sayWorld'): WorldResponse.FromString,
     }
     cardinalities = {
       'sayWorld': cardinality.Cardinality.UNARY_UNARY,

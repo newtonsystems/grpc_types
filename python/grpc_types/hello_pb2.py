@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='hello.proto',
   package='grpc_types',
   syntax='proto3',
-  serialized_pb=_b('\n\x0bhello.proto\x12\ngrpc_types\"\x1c\n\x0cHelloRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\"\x1d\n\nHelloReply\x12\x0f\n\x07message\x18\x01 \x01(\t2G\n\x05Hello\x12>\n\x08sayHello\x12\x18.grpc_types.HelloRequest\x1a\x16.grpc_types.HelloReply\"\x00\x62\x06proto3')
+  serialized_pb=_b('\n\x0bhello.proto\x12\ngrpc_types\"\x1c\n\x0cHelloRequest\x12\x0c\n\x04name\x18\x01 \x01(\t\" \n\rHelloResponse\x12\x0f\n\x07message\x18\x01 \x01(\t2J\n\x05Hello\x12\x41\n\x08sayHello\x12\x18.grpc_types.HelloRequest\x1a\x19.grpc_types.HelloResponse\"\x00\x62\x06proto3')
 )
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -57,15 +57,15 @@ _HELLOREQUEST = _descriptor.Descriptor(
 )
 
 
-_HELLOREPLY = _descriptor.Descriptor(
-  name='HelloReply',
-  full_name='grpc_types.HelloReply',
+_HELLORESPONSE = _descriptor.Descriptor(
+  name='HelloResponse',
+  full_name='grpc_types.HelloResponse',
   filename=None,
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
     _descriptor.FieldDescriptor(
-      name='message', full_name='grpc_types.HelloReply.message', index=0,
+      name='message', full_name='grpc_types.HelloResponse.message', index=0,
       number=1, type=9, cpp_type=9, label=1,
       has_default_value=False, default_value=_b("").decode('utf-8'),
       message_type=None, enum_type=None, containing_type=None,
@@ -84,11 +84,11 @@ _HELLOREPLY = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=57,
-  serialized_end=86,
+  serialized_end=89,
 )
 
 DESCRIPTOR.message_types_by_name['HelloRequest'] = _HELLOREQUEST
-DESCRIPTOR.message_types_by_name['HelloReply'] = _HELLOREPLY
+DESCRIPTOR.message_types_by_name['HelloResponse'] = _HELLORESPONSE
 
 HelloRequest = _reflection.GeneratedProtocolMessageType('HelloRequest', (_message.Message,), dict(
   DESCRIPTOR = _HELLOREQUEST,
@@ -97,12 +97,12 @@ HelloRequest = _reflection.GeneratedProtocolMessageType('HelloRequest', (_messag
   ))
 _sym_db.RegisterMessage(HelloRequest)
 
-HelloReply = _reflection.GeneratedProtocolMessageType('HelloReply', (_message.Message,), dict(
-  DESCRIPTOR = _HELLOREPLY,
+HelloResponse = _reflection.GeneratedProtocolMessageType('HelloResponse', (_message.Message,), dict(
+  DESCRIPTOR = _HELLORESPONSE,
   __module__ = 'hello_pb2'
-  # @@protoc_insertion_point(class_scope:grpc_types.HelloReply)
+  # @@protoc_insertion_point(class_scope:grpc_types.HelloResponse)
   ))
-_sym_db.RegisterMessage(HelloReply)
+_sym_db.RegisterMessage(HelloResponse)
 
 
 try:
@@ -126,7 +126,7 @@ try:
       self.sayHello = channel.unary_unary(
           '/grpc_types.Hello/sayHello',
           request_serializer=HelloRequest.SerializeToString,
-          response_deserializer=HelloReply.FromString,
+          response_deserializer=HelloResponse.FromString,
           )
 
 
@@ -145,7 +145,7 @@ try:
         'sayHello': grpc.unary_unary_rpc_method_handler(
             servicer.sayHello,
             request_deserializer=HelloRequest.FromString,
-            response_serializer=HelloReply.SerializeToString,
+            response_serializer=HelloResponse.SerializeToString,
         ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
@@ -188,7 +188,7 @@ try:
       ('grpc_types.Hello', 'sayHello'): HelloRequest.FromString,
     }
     response_serializers = {
-      ('grpc_types.Hello', 'sayHello'): HelloReply.SerializeToString,
+      ('grpc_types.Hello', 'sayHello'): HelloResponse.SerializeToString,
     }
     method_implementations = {
       ('grpc_types.Hello', 'sayHello'): face_utilities.unary_unary_inline(servicer.sayHello),
@@ -207,7 +207,7 @@ try:
       ('grpc_types.Hello', 'sayHello'): HelloRequest.SerializeToString,
     }
     response_deserializers = {
-      ('grpc_types.Hello', 'sayHello'): HelloReply.FromString,
+      ('grpc_types.Hello', 'sayHello'): HelloResponse.FromString,
     }
     cardinalities = {
       'sayHello': cardinality.Cardinality.UNARY_UNARY,
