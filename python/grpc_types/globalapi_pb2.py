@@ -41,6 +41,9 @@ try:
 
 
   class GlobalAPIStub(object):
+    """TODO: CHANGE NAME TO MIXEDCAPS I.E. SayHello as oppose to sayHello
+    when using GO will be SayHello -- this will stop confusion
+    """
 
     def __init__(self, channel):
       """Constructor.
@@ -61,6 +64,9 @@ try:
 
 
   class GlobalAPIServicer(object):
+    """TODO: CHANGE NAME TO MIXEDCAPS I.E. SayHello as oppose to sayHello
+    when using GO will be SayHello -- this will stop confusion
+    """
 
     def sayHello(self, request, context):
       """All API calls from all services
@@ -99,6 +105,9 @@ try:
     It is recommended to use the GA API (classes and functions in this
     file not marked beta) for all further purposes. This class was generated
     only to ease transition from grpcio<0.15.0 to grpcio>=0.15.0."""
+    """TODO: CHANGE NAME TO MIXEDCAPS I.E. SayHello as oppose to sayHello
+    when using GO will be SayHello -- this will stop confusion
+    """
     def sayHello(self, request, context):
       """All API calls from all services
       """
@@ -113,6 +122,9 @@ try:
     It is recommended to use the GA API (classes and functions in this
     file not marked beta) for all further purposes. This class was generated
     only to ease transition from grpcio<0.15.0 to grpcio>=0.15.0."""
+    """TODO: CHANGE NAME TO MIXEDCAPS I.E. SayHello as oppose to sayHello
+    when using GO will be SayHello -- this will stop confusion
+    """
     def sayHello(self, request, timeout, metadata=None, with_call=False, protocol_options=None):
       """All API calls from all services
       """
