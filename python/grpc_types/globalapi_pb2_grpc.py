@@ -6,6 +6,9 @@ import world_pb2 as world__pb2
 
 
 class GlobalAPIStub(object):
+  """TODO: CHANGE NAME TO MIXEDCAPS I.E. SayHello as oppose to sayHello
+  when using GO will be SayHello -- this will stop confusion
+  """
 
   def __init__(self, channel):
     """Constructor.
@@ -26,6 +29,9 @@ class GlobalAPIStub(object):
 
 
 class GlobalAPIServicer(object):
+  """TODO: CHANGE NAME TO MIXEDCAPS I.E. SayHello as oppose to sayHello
+  when using GO will be SayHello -- this will stop confusion
+  """
 
   def sayHello(self, request, context):
     """All API calls from all services
