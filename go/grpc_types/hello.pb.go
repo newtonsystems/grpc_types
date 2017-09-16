@@ -25,7 +25,7 @@ type HelloRequest struct {
 func (m *HelloRequest) Reset()                    { *m = HelloRequest{} }
 func (m *HelloRequest) String() string            { return proto.CompactTextString(m) }
 func (*HelloRequest) ProtoMessage()               {}
-func (*HelloRequest) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{0} }
+func (*HelloRequest) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{0} }
 
 func (m *HelloRequest) GetName() string {
 	if m != nil {
@@ -42,7 +42,7 @@ type HelloResponse struct {
 func (m *HelloResponse) Reset()                    { *m = HelloResponse{} }
 func (m *HelloResponse) String() string            { return proto.CompactTextString(m) }
 func (*HelloResponse) ProtoMessage()               {}
-func (*HelloResponse) Descriptor() ([]byte, []int) { return fileDescriptor1, []int{1} }
+func (*HelloResponse) Descriptor() ([]byte, []int) { return fileDescriptor2, []int{1} }
 
 func (m *HelloResponse) GetMessage() string {
 	if m != nil {
@@ -130,9 +130,9 @@ var _Hello_serviceDesc = grpc.ServiceDesc{
 	Metadata: "hello.proto",
 }
 
-func init() { proto.RegisterFile("hello.proto", fileDescriptor1) }
+func init() { proto.RegisterFile("hello.proto", fileDescriptor2) }
 
-var fileDescriptor1 = []byte{
+var fileDescriptor2 = []byte{
 	// 141 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0xe2, 0xce, 0x48, 0xcd, 0xc9,
 	0xc9, 0xd7, 0x2b, 0x28, 0xca, 0x2f, 0xc9, 0x17, 0xe2, 0x4a, 0x2f, 0x2a, 0x48, 0x8e, 0x2f, 0xa9,

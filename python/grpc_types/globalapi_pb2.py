@@ -15,15 +15,16 @@ _sym_db = _symbol_database.Default()
 
 import hello_pb2 as hello__pb2
 import world_pb2 as world__pb2
+import agentmgmt_pb2 as agentmgmt__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='globalapi.proto',
   package='grpc_types',
   syntax='proto3',
-  serialized_pb=_b('\n\x0fglobalapi.proto\x12\ngrpc_types\x1a\x0bhello.proto\x1a\x0bworld.proto2\x91\x01\n\tGlobalAPI\x12\x41\n\x08sayHello\x12\x18.grpc_types.HelloRequest\x1a\x19.grpc_types.HelloResponse\"\x00\x12\x41\n\x08sayWorld\x12\x18.grpc_types.WorldRequest\x1a\x19.grpc_types.WorldResponse\"\x00\x62\x06proto3')
+  serialized_pb=_b('\n\x0fglobalapi.proto\x12\ngrpc_types\x1a\x0bhello.proto\x1a\x0bworld.proto\x1a\x0f\x61gentmgmt.proto2\xf8\x01\n\tGlobalAPI\x12\x41\n\x08sayHello\x12\x18.grpc_types.HelloRequest\x1a\x19.grpc_types.HelloResponse\"\x00\x12\x41\n\x08sayWorld\x12\x18.grpc_types.WorldRequest\x1a\x19.grpc_types.WorldResponse\"\x00\x12\x65\n\x12GetAvailableAgents\x12%.grpc_types.GetAvailableAgentsRequest\x1a&.grpc_types.GetAvailableAgentsResponse\"\x00\x62\x06proto3')
   ,
-  dependencies=[hello__pb2.DESCRIPTOR,world__pb2.DESCRIPTOR,])
+  dependencies=[hello__pb2.DESCRIPTOR,world__pb2.DESCRIPTOR,agentmgmt__pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 
@@ -43,6 +44,7 @@ try:
   class GlobalAPIStub(object):
     """TODO: CHANGE NAME TO MIXEDCAPS I.E. SayHello as oppose to sayHello
     when using GO will be SayHello -- this will stop confusion
+    REMEMBER: do NOT use - for .proto names
     """
 
     def __init__(self, channel):
@@ -61,11 +63,17 @@ try:
           request_serializer=world__pb2.WorldRequest.SerializeToString,
           response_deserializer=world__pb2.WorldResponse.FromString,
           )
+      self.GetAvailableAgents = channel.unary_unary(
+          '/grpc_types.GlobalAPI/GetAvailableAgents',
+          request_serializer=agentmgmt__pb2.GetAvailableAgentsRequest.SerializeToString,
+          response_deserializer=agentmgmt__pb2.GetAvailableAgentsResponse.FromString,
+          )
 
 
   class GlobalAPIServicer(object):
     """TODO: CHANGE NAME TO MIXEDCAPS I.E. SayHello as oppose to sayHello
     when using GO will be SayHello -- this will stop confusion
+    REMEMBER: do NOT use - for .proto names
     """
 
     def sayHello(self, request, context):
@@ -76,6 +84,11 @@ try:
       raise NotImplementedError('Method not implemented!')
 
     def sayWorld(self, request, context):
+      context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+      context.set_details('Method not implemented!')
+      raise NotImplementedError('Method not implemented!')
+
+    def GetAvailableAgents(self, request, context):
       context.set_code(grpc.StatusCode.UNIMPLEMENTED)
       context.set_details('Method not implemented!')
       raise NotImplementedError('Method not implemented!')
@@ -93,6 +106,11 @@ try:
             request_deserializer=world__pb2.WorldRequest.FromString,
             response_serializer=world__pb2.WorldResponse.SerializeToString,
         ),
+        'GetAvailableAgents': grpc.unary_unary_rpc_method_handler(
+            servicer.GetAvailableAgents,
+            request_deserializer=agentmgmt__pb2.GetAvailableAgentsRequest.FromString,
+            response_serializer=agentmgmt__pb2.GetAvailableAgentsResponse.SerializeToString,
+        ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
         'grpc_types.GlobalAPI', rpc_method_handlers)
@@ -107,12 +125,15 @@ try:
     only to ease transition from grpcio<0.15.0 to grpcio>=0.15.0."""
     """TODO: CHANGE NAME TO MIXEDCAPS I.E. SayHello as oppose to sayHello
     when using GO will be SayHello -- this will stop confusion
+    REMEMBER: do NOT use - for .proto names
     """
     def sayHello(self, request, context):
       """All API calls from all services
       """
       context.code(beta_interfaces.StatusCode.UNIMPLEMENTED)
     def sayWorld(self, request, context):
+      context.code(beta_interfaces.StatusCode.UNIMPLEMENTED)
+    def GetAvailableAgents(self, request, context):
       context.code(beta_interfaces.StatusCode.UNIMPLEMENTED)
 
 
@@ -124,6 +145,7 @@ try:
     only to ease transition from grpcio<0.15.0 to grpcio>=0.15.0."""
     """TODO: CHANGE NAME TO MIXEDCAPS I.E. SayHello as oppose to sayHello
     when using GO will be SayHello -- this will stop confusion
+    REMEMBER: do NOT use - for .proto names
     """
     def sayHello(self, request, timeout, metadata=None, with_call=False, protocol_options=None):
       """All API calls from all services
@@ -133,6 +155,9 @@ try:
     def sayWorld(self, request, timeout, metadata=None, with_call=False, protocol_options=None):
       raise NotImplementedError()
     sayWorld.future = None
+    def GetAvailableAgents(self, request, timeout, metadata=None, with_call=False, protocol_options=None):
+      raise NotImplementedError()
+    GetAvailableAgents.future = None
 
 
   def beta_create_GlobalAPI_server(servicer, pool=None, pool_size=None, default_timeout=None, maximum_timeout=None):
@@ -142,14 +167,17 @@ try:
     file not marked beta) for all further purposes. This function was
     generated only to ease transition from grpcio<0.15.0 to grpcio>=0.15.0"""
     request_deserializers = {
+      ('grpc_types.GlobalAPI', 'GetAvailableAgents'): agentmgmt__pb2.GetAvailableAgentsRequest.FromString,
       ('grpc_types.GlobalAPI', 'sayHello'): hello__pb2.HelloRequest.FromString,
       ('grpc_types.GlobalAPI', 'sayWorld'): world__pb2.WorldRequest.FromString,
     }
     response_serializers = {
+      ('grpc_types.GlobalAPI', 'GetAvailableAgents'): agentmgmt__pb2.GetAvailableAgentsResponse.SerializeToString,
       ('grpc_types.GlobalAPI', 'sayHello'): hello__pb2.HelloResponse.SerializeToString,
       ('grpc_types.GlobalAPI', 'sayWorld'): world__pb2.WorldResponse.SerializeToString,
     }
     method_implementations = {
+      ('grpc_types.GlobalAPI', 'GetAvailableAgents'): face_utilities.unary_unary_inline(servicer.GetAvailableAgents),
       ('grpc_types.GlobalAPI', 'sayHello'): face_utilities.unary_unary_inline(servicer.sayHello),
       ('grpc_types.GlobalAPI', 'sayWorld'): face_utilities.unary_unary_inline(servicer.sayWorld),
     }
@@ -164,14 +192,17 @@ try:
     file not marked beta) for all further purposes. This function was
     generated only to ease transition from grpcio<0.15.0 to grpcio>=0.15.0"""
     request_serializers = {
+      ('grpc_types.GlobalAPI', 'GetAvailableAgents'): agentmgmt__pb2.GetAvailableAgentsRequest.SerializeToString,
       ('grpc_types.GlobalAPI', 'sayHello'): hello__pb2.HelloRequest.SerializeToString,
       ('grpc_types.GlobalAPI', 'sayWorld'): world__pb2.WorldRequest.SerializeToString,
     }
     response_deserializers = {
+      ('grpc_types.GlobalAPI', 'GetAvailableAgents'): agentmgmt__pb2.GetAvailableAgentsResponse.FromString,
       ('grpc_types.GlobalAPI', 'sayHello'): hello__pb2.HelloResponse.FromString,
       ('grpc_types.GlobalAPI', 'sayWorld'): world__pb2.WorldResponse.FromString,
     }
     cardinalities = {
+      'GetAvailableAgents': cardinality.Cardinality.UNARY_UNARY,
       'sayHello': cardinality.Cardinality.UNARY_UNARY,
       'sayWorld': cardinality.Cardinality.UNARY_UNARY,
     }
