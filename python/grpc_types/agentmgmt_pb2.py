@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='agentmgmt.proto',
   package='grpc_types',
   syntax='proto3',
-  serialized_pb=_b('\n\x0f\x61gentmgmt.proto\x12\ngrpc_types\"\x1b\n\x19GetAvailableAgentsRequest\"/\n\x1aGetAvailableAgentsResponse\x12\x11\n\tagent_ids\x18\x01 \x03(\t2r\n\tAgentMgmt\x12\x65\n\x12GetAvailableAgents\x12%.grpc_types.GetAvailableAgentsRequest\x1a&.grpc_types.GetAvailableAgentsResponse\"\x00\x62\x06proto3')
+  serialized_pb=_b('\n\x0f\x61gentmgmt.proto\x12\ngrpc_types\"*\n\x19GetAvailableAgentsRequest\x12\r\n\x05limit\x18\x01 \x01(\x05\"/\n\x1aGetAvailableAgentsResponse\x12\x11\n\tagent_ids\x18\x01 \x03(\t2r\n\tAgentMgmt\x12\x65\n\x12GetAvailableAgents\x12%.grpc_types.GetAvailableAgentsRequest\x1a&.grpc_types.GetAvailableAgentsResponse\"\x00\x62\x06proto3')
 )
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -33,6 +33,13 @@ _GETAVAILABLEAGENTSREQUEST = _descriptor.Descriptor(
   file=DESCRIPTOR,
   containing_type=None,
   fields=[
+    _descriptor.FieldDescriptor(
+      name='limit', full_name='grpc_types.GetAvailableAgentsRequest.limit', index=0,
+      number=1, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
@@ -46,7 +53,7 @@ _GETAVAILABLEAGENTSREQUEST = _descriptor.Descriptor(
   oneofs=[
   ],
   serialized_start=31,
-  serialized_end=58,
+  serialized_end=73,
 )
 
 
@@ -76,8 +83,8 @@ _GETAVAILABLEAGENTSRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=60,
-  serialized_end=107,
+  serialized_start=75,
+  serialized_end=122,
 )
 
 DESCRIPTOR.message_types_by_name['GetAvailableAgentsRequest'] = _GETAVAILABLEAGENTSREQUEST
