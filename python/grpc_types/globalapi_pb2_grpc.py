@@ -33,6 +33,21 @@ class GlobalAPIStub(object):
         request_serializer=agentmgmt__pb2.GetAvailableAgentsRequest.SerializeToString,
         response_deserializer=agentmgmt__pb2.GetAvailableAgentsResponse.FromString,
         )
+    self.GetAgentIDFromRef = channel.unary_unary(
+        '/grpc_types.GlobalAPI/GetAgentIDFromRef',
+        request_serializer=agentmgmt__pb2.GetAgentIDFromRefRequest.SerializeToString,
+        response_deserializer=agentmgmt__pb2.GetAgentIDFromRefResponse.FromString,
+        )
+    self.HeartBeat = channel.unary_unary(
+        '/grpc_types.GlobalAPI/HeartBeat',
+        request_serializer=agentmgmt__pb2.HeartBeatRequest.SerializeToString,
+        response_deserializer=agentmgmt__pb2.HeartBeatResponse.FromString,
+        )
+    self.AcceptCall = channel.unary_unary(
+        '/grpc_types.GlobalAPI/AcceptCall',
+        request_serializer=agentmgmt__pb2.AcceptCallRequest.SerializeToString,
+        response_deserializer=agentmgmt__pb2.AcceptCallResponse.FromString,
+        )
 
 
 class GlobalAPIServicer(object):
@@ -58,6 +73,21 @@ class GlobalAPIServicer(object):
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
+  def GetAgentIDFromRef(self, request, context):
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
+  def HeartBeat(self, request, context):
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
+  def AcceptCall(self, request, context):
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
 
 def add_GlobalAPIServicer_to_server(servicer, server):
   rpc_method_handlers = {
@@ -75,6 +105,21 @@ def add_GlobalAPIServicer_to_server(servicer, server):
           servicer.GetAvailableAgents,
           request_deserializer=agentmgmt__pb2.GetAvailableAgentsRequest.FromString,
           response_serializer=agentmgmt__pb2.GetAvailableAgentsResponse.SerializeToString,
+      ),
+      'GetAgentIDFromRef': grpc.unary_unary_rpc_method_handler(
+          servicer.GetAgentIDFromRef,
+          request_deserializer=agentmgmt__pb2.GetAgentIDFromRefRequest.FromString,
+          response_serializer=agentmgmt__pb2.GetAgentIDFromRefResponse.SerializeToString,
+      ),
+      'HeartBeat': grpc.unary_unary_rpc_method_handler(
+          servicer.HeartBeat,
+          request_deserializer=agentmgmt__pb2.HeartBeatRequest.FromString,
+          response_serializer=agentmgmt__pb2.HeartBeatResponse.SerializeToString,
+      ),
+      'AcceptCall': grpc.unary_unary_rpc_method_handler(
+          servicer.AcceptCall,
+          request_deserializer=agentmgmt__pb2.AcceptCallRequest.FromString,
+          response_serializer=agentmgmt__pb2.AcceptCallResponse.SerializeToString,
       ),
   }
   generic_handler = grpc.method_handlers_generic_handler(
