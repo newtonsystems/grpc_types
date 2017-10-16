@@ -1,6 +1,6 @@
 #
 # Circle CI 2.0 Docs
-# 
+#
 # For info, see: https://circleci.com/docs/2.0/
 #
 
@@ -44,7 +44,7 @@ jobs:
 
               # Only Commit & Push if there are changes
               if [[ `git status --porcelain python/` || `git status --porcelain go/` ]]; then
-                  git pull
+                  git pull origin $CIRCLE_BRANCH
                   git add -A python/
                   git add -A go/
                   git commit --allow-empty -m "[ci skip] Auto commit for `cd protos && git log -1 --pretty=short --abbrev-commit`"
@@ -52,10 +52,9 @@ jobs:
               fi
 
       - deploy:
-          name: Deploy python package to devpi 
+          name: Deploy python package to devpi
           command: |
               # NOTE: At the moment even no changes are packaged up into
               #       a new python devpi package
               cd python
               ../devops/scripts/circle-upload-devpi.sh
-
