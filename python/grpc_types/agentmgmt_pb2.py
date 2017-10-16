@@ -19,11 +19,33 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='agentmgmt.proto',
   package='grpc_types',
   syntax='proto3',
-  serialized_pb=_b('\n\x0f\x61gentmgmt.proto\x12\ngrpc_types\"*\n\x19GetAvailableAgentsRequest\x12\r\n\x05limit\x18\x01 \x01(\x05\"/\n\x1aGetAvailableAgentsResponse\x12\x11\n\tagent_ids\x18\x01 \x03(\t\"*\n\x18GetAgentIDFromRefRequest\x12\x0e\n\x06ref_id\x18\x01 \x01(\t\"-\n\x19GetAgentIDFromRefResponse\x12\x10\n\x08\x61gent_id\x18\x01 \x01(\x05\"#\n\x10HeartBeatRequest\x12\x0f\n\x07message\x18\x01 \x01(\t\"$\n\x11HeartBeatResponse\x12\x0f\n\x07message\x18\x01 \x01(\t\"$\n\x11\x41\x63\x63\x65ptCallRequest\x12\x0f\n\x07message\x18\x01 \x01(\t\"&\n\x12\x41\x63\x63\x65ptCallResponse\x12\x10\n\x08response\x18\x01 \x01(\t2\xf1\x02\n\tAgentMgmt\x12\x65\n\x12GetAvailableAgents\x12%.grpc_types.GetAvailableAgentsRequest\x1a&.grpc_types.GetAvailableAgentsResponse\"\x00\x12\x62\n\x11GetAgentIDFromRef\x12$.grpc_types.GetAgentIDFromRefRequest\x1a%.grpc_types.GetAgentIDFromRefResponse\"\x00\x12J\n\tHeartBeat\x12\x1c.grpc_types.HeartBeatRequest\x1a\x1d.grpc_types.HeartBeatResponse\"\x00\x12M\n\nAcceptCall\x12\x1d.grpc_types.AcceptCallRequest\x1a\x1e.grpc_types.AcceptCallResponse\"\x00\x62\x06proto3')
+  serialized_pb=_b('\n\x0f\x61gentmgmt.proto\x12\ngrpc_types\"*\n\x19GetAvailableAgentsRequest\x12\r\n\x05limit\x18\x01 \x01(\x05\"/\n\x1aGetAvailableAgentsResponse\x12\x11\n\tagent_ids\x18\x01 \x03(\t\"*\n\x18GetAgentIDFromRefRequest\x12\x0e\n\x06ref_id\x18\x01 \x01(\t\"-\n\x19GetAgentIDFromRefResponse\x12\x10\n\x08\x61gent_id\x18\x01 \x01(\x05\"#\n\x10HeartBeatRequest\x12\x0f\n\x07message\x18\x01 \x01(\t\"\xa6\x01\n\x11HeartBeatResponse\x12\x0f\n\x07message\x18\x01 \x01(\t\x12=\n\x06status\x18\x02 \x01(\x0e\x32-.grpc_types.HeartBeatResponse.HeartBeatStatus\"A\n\x0fHeartBeatStatus\x12\x18\n\x14HEARTBEAT_SUCCESSFUL\x10\x00\x12\x14\n\x10HEARTBEAT_FAILED\x10\x01\"$\n\x11\x41\x63\x63\x65ptCallRequest\x12\x0f\n\x07message\x18\x01 \x01(\t\"&\n\x12\x41\x63\x63\x65ptCallResponse\x12\x10\n\x08response\x18\x01 \x01(\t2\xf1\x02\n\tAgentMgmt\x12\x65\n\x12GetAvailableAgents\x12%.grpc_types.GetAvailableAgentsRequest\x1a&.grpc_types.GetAvailableAgentsResponse\"\x00\x12\x62\n\x11GetAgentIDFromRef\x12$.grpc_types.GetAgentIDFromRefRequest\x1a%.grpc_types.GetAgentIDFromRefResponse\"\x00\x12J\n\tHeartBeat\x12\x1c.grpc_types.HeartBeatRequest\x1a\x1d.grpc_types.HeartBeatResponse\"\x00\x12M\n\nAcceptCall\x12\x1d.grpc_types.AcceptCallRequest\x1a\x1e.grpc_types.AcceptCallResponse\"\x00\x62\x06proto3')
 )
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 
+
+_HEARTBEATRESPONSE_HEARTBEATSTATUS = _descriptor.EnumDescriptor(
+  name='HeartBeatStatus',
+  full_name='grpc_types.HeartBeatResponse.HeartBeatStatus',
+  filename=None,
+  file=DESCRIPTOR,
+  values=[
+    _descriptor.EnumValueDescriptor(
+      name='HEARTBEAT_SUCCESSFUL', index=0, number=0,
+      options=None,
+      type=None),
+    _descriptor.EnumValueDescriptor(
+      name='HEARTBEAT_FAILED', index=1, number=1,
+      options=None,
+      type=None),
+  ],
+  containing_type=None,
+  options=None,
+  serialized_start=354,
+  serialized_end=419,
+)
+_sym_db.RegisterEnumDescriptor(_HEARTBEATRESPONSE_HEARTBEATSTATUS)
 
 
 _GETAVAILABLEAGENTSREQUEST = _descriptor.Descriptor(
@@ -195,11 +217,19 @@ _HEARTBEATRESPONSE = _descriptor.Descriptor(
       message_type=None, enum_type=None, containing_type=None,
       is_extension=False, extension_scope=None,
       options=None),
+    _descriptor.FieldDescriptor(
+      name='status', full_name='grpc_types.HeartBeatResponse.status', index=1,
+      number=2, type=14, cpp_type=8, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
   ],
   extensions=[
   ],
   nested_types=[],
   enum_types=[
+    _HEARTBEATRESPONSE_HEARTBEATSTATUS,
   ],
   options=None,
   is_extendable=False,
@@ -207,8 +237,8 @@ _HEARTBEATRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=252,
-  serialized_end=288,
+  serialized_start=253,
+  serialized_end=419,
 )
 
 
@@ -238,8 +268,8 @@ _ACCEPTCALLREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=290,
-  serialized_end=326,
+  serialized_start=421,
+  serialized_end=457,
 )
 
 
@@ -269,10 +299,12 @@ _ACCEPTCALLRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=328,
-  serialized_end=366,
+  serialized_start=459,
+  serialized_end=497,
 )
 
+_HEARTBEATRESPONSE.fields_by_name['status'].enum_type = _HEARTBEATRESPONSE_HEARTBEATSTATUS
+_HEARTBEATRESPONSE_HEARTBEATSTATUS.containing_type = _HEARTBEATRESPONSE
 DESCRIPTOR.message_types_by_name['GetAvailableAgentsRequest'] = _GETAVAILABLEAGENTSREQUEST
 DESCRIPTOR.message_types_by_name['GetAvailableAgentsResponse'] = _GETAVAILABLEAGENTSRESPONSE
 DESCRIPTOR.message_types_by_name['GetAgentIDFromRefRequest'] = _GETAGENTIDFROMREFREQUEST
