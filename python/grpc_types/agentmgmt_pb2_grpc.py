@@ -12,6 +12,11 @@ class AgentMgmtStub(object):
     Args:
       channel: A grpc.Channel.
     """
+    self.AddTask = channel.unary_unary(
+        '/grpc_types.AgentMgmt/AddTask',
+        request_serializer=agentmgmt__pb2.AddTaskRequest.SerializeToString,
+        response_deserializer=agentmgmt__pb2.AddTaskResponse.FromString,
+        )
     self.GetAvailableAgents = channel.unary_unary(
         '/grpc_types.AgentMgmt/GetAvailableAgents',
         request_serializer=agentmgmt__pb2.GetAvailableAgentsRequest.SerializeToString,
@@ -36,9 +41,14 @@ class AgentMgmtStub(object):
 
 class AgentMgmtServicer(object):
 
-  def GetAvailableAgents(self, request, context):
+  def AddTask(self, request, context):
     """AgentMgmt service // Go uses CamelCase so use it for API calls
     """
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
+  def GetAvailableAgents(self, request, context):
     context.set_code(grpc.StatusCode.UNIMPLEMENTED)
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
@@ -61,6 +71,11 @@ class AgentMgmtServicer(object):
 
 def add_AgentMgmtServicer_to_server(servicer, server):
   rpc_method_handlers = {
+      'AddTask': grpc.unary_unary_rpc_method_handler(
+          servicer.AddTask,
+          request_deserializer=agentmgmt__pb2.AddTaskRequest.FromString,
+          response_serializer=agentmgmt__pb2.AddTaskResponse.SerializeToString,
+      ),
       'GetAvailableAgents': grpc.unary_unary_rpc_method_handler(
           servicer.GetAvailableAgents,
           request_deserializer=agentmgmt__pb2.GetAvailableAgentsRequest.FromString,
