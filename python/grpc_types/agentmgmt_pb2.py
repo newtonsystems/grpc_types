@@ -19,7 +19,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='agentmgmt.proto',
   package='grpc_types',
   syntax='proto3',
-  serialized_pb=_b('\n\x0f\x61gentmgmt.proto\x12\ngrpc_types\"*\n\x19GetAvailableAgentsRequest\x12\r\n\x05limit\x18\x01 \x01(\x05\"/\n\x1aGetAvailableAgentsResponse\x12\x11\n\tagent_ids\x18\x01 \x03(\t\"*\n\x18GetAgentIDFromRefRequest\x12\x0e\n\x06ref_id\x18\x01 \x01(\t\"-\n\x19GetAgentIDFromRefResponse\x12\x10\n\x08\x61gent_id\x18\x01 \x01(\x05\"5\n\x10HeartBeatRequest\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\x10\n\x08\x61gent_id\x18\x02 \x01(\x05\"\xa6\x01\n\x11HeartBeatResponse\x12\x0f\n\x07message\x18\x01 \x01(\t\x12=\n\x06status\x18\x02 \x01(\x0e\x32-.grpc_types.HeartBeatResponse.HeartBeatStatus\"A\n\x0fHeartBeatStatus\x12\x18\n\x14HEARTBEAT_SUCCESSFUL\x10\x00\x12\x14\n\x10HEARTBEAT_FAILED\x10\x01\"$\n\x11\x41\x63\x63\x65ptCallRequest\x12\x0f\n\x07message\x18\x01 \x01(\t\"&\n\x12\x41\x63\x63\x65ptCallResponse\x12\x10\n\x08response\x18\x01 \x01(\t2\xf1\x02\n\tAgentMgmt\x12\x65\n\x12GetAvailableAgents\x12%.grpc_types.GetAvailableAgentsRequest\x1a&.grpc_types.GetAvailableAgentsResponse\"\x00\x12\x62\n\x11GetAgentIDFromRef\x12$.grpc_types.GetAgentIDFromRefRequest\x1a%.grpc_types.GetAgentIDFromRefResponse\"\x00\x12J\n\tHeartBeat\x12\x1c.grpc_types.HeartBeatRequest\x1a\x1d.grpc_types.HeartBeatResponse\"\x00\x12M\n\nAcceptCall\x12\x1d.grpc_types.AcceptCallRequest\x1a\x1e.grpc_types.AcceptCallResponse\"\x00\x62\x06proto3')
+  serialized_pb=_b('\n\x0f\x61gentmgmt.proto\x12\ngrpc_types\"3\n\x0e\x41\x64\x64TaskRequest\x12\x0f\n\x07\x63ust_id\x18\x01 \x01(\x05\x12\x10\n\x08\x63\x61ll_ids\x18\x02 \x03(\x05\"\"\n\x0f\x41\x64\x64TaskResponse\x12\x0f\n\x07task_id\x18\x01 \x01(\x05\"*\n\x19GetAvailableAgentsRequest\x12\r\n\x05limit\x18\x01 \x01(\x05\"/\n\x1aGetAvailableAgentsResponse\x12\x11\n\tagent_ids\x18\x01 \x03(\t\"*\n\x18GetAgentIDFromRefRequest\x12\x0e\n\x06ref_id\x18\x01 \x01(\t\"-\n\x19GetAgentIDFromRefResponse\x12\x10\n\x08\x61gent_id\x18\x01 \x01(\x05\"5\n\x10HeartBeatRequest\x12\x0f\n\x07message\x18\x01 \x01(\t\x12\x10\n\x08\x61gent_id\x18\x02 \x01(\x05\"\xa6\x01\n\x11HeartBeatResponse\x12\x0f\n\x07message\x18\x01 \x01(\t\x12=\n\x06status\x18\x02 \x01(\x0e\x32-.grpc_types.HeartBeatResponse.HeartBeatStatus\"A\n\x0fHeartBeatStatus\x12\x18\n\x14HEARTBEAT_SUCCESSFUL\x10\x00\x12\x14\n\x10HEARTBEAT_FAILED\x10\x01\"$\n\x11\x41\x63\x63\x65ptCallRequest\x12\x0f\n\x07message\x18\x01 \x01(\t\"&\n\x12\x41\x63\x63\x65ptCallResponse\x12\x10\n\x08response\x18\x01 \x01(\t2\xb7\x03\n\tAgentMgmt\x12\x44\n\x07\x41\x64\x64Task\x12\x1a.grpc_types.AddTaskRequest\x1a\x1b.grpc_types.AddTaskResponse\"\x00\x12\x65\n\x12GetAvailableAgents\x12%.grpc_types.GetAvailableAgentsRequest\x1a&.grpc_types.GetAvailableAgentsResponse\"\x00\x12\x62\n\x11GetAgentIDFromRef\x12$.grpc_types.GetAgentIDFromRefRequest\x1a%.grpc_types.GetAgentIDFromRefResponse\"\x00\x12J\n\tHeartBeat\x12\x1c.grpc_types.HeartBeatRequest\x1a\x1d.grpc_types.HeartBeatResponse\"\x00\x12M\n\nAcceptCall\x12\x1d.grpc_types.AcceptCallRequest\x1a\x1e.grpc_types.AcceptCallResponse\"\x00\x62\x06proto3')
 )
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
@@ -42,10 +42,79 @@ _HEARTBEATRESPONSE_HEARTBEATSTATUS = _descriptor.EnumDescriptor(
   ],
   containing_type=None,
   options=None,
-  serialized_start=372,
-  serialized_end=437,
+  serialized_start=461,
+  serialized_end=526,
 )
 _sym_db.RegisterEnumDescriptor(_HEARTBEATRESPONSE_HEARTBEATSTATUS)
+
+
+_ADDTASKREQUEST = _descriptor.Descriptor(
+  name='AddTaskRequest',
+  full_name='grpc_types.AddTaskRequest',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='cust_id', full_name='grpc_types.AddTaskRequest.cust_id', index=0,
+      number=1, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+    _descriptor.FieldDescriptor(
+      name='call_ids', full_name='grpc_types.AddTaskRequest.call_ids', index=1,
+      number=2, type=5, cpp_type=1, label=3,
+      has_default_value=False, default_value=[],
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=31,
+  serialized_end=82,
+)
+
+
+_ADDTASKRESPONSE = _descriptor.Descriptor(
+  name='AddTaskResponse',
+  full_name='grpc_types.AddTaskResponse',
+  filename=None,
+  file=DESCRIPTOR,
+  containing_type=None,
+  fields=[
+    _descriptor.FieldDescriptor(
+      name='task_id', full_name='grpc_types.AddTaskResponse.task_id', index=0,
+      number=1, type=5, cpp_type=1, label=1,
+      has_default_value=False, default_value=0,
+      message_type=None, enum_type=None, containing_type=None,
+      is_extension=False, extension_scope=None,
+      options=None),
+  ],
+  extensions=[
+  ],
+  nested_types=[],
+  enum_types=[
+  ],
+  options=None,
+  is_extendable=False,
+  syntax='proto3',
+  extension_ranges=[],
+  oneofs=[
+  ],
+  serialized_start=84,
+  serialized_end=118,
+)
 
 
 _GETAVAILABLEAGENTSREQUEST = _descriptor.Descriptor(
@@ -74,8 +143,8 @@ _GETAVAILABLEAGENTSREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=31,
-  serialized_end=73,
+  serialized_start=120,
+  serialized_end=162,
 )
 
 
@@ -105,8 +174,8 @@ _GETAVAILABLEAGENTSRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=75,
-  serialized_end=122,
+  serialized_start=164,
+  serialized_end=211,
 )
 
 
@@ -136,8 +205,8 @@ _GETAGENTIDFROMREFREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=124,
-  serialized_end=166,
+  serialized_start=213,
+  serialized_end=255,
 )
 
 
@@ -167,8 +236,8 @@ _GETAGENTIDFROMREFRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=168,
-  serialized_end=213,
+  serialized_start=257,
+  serialized_end=302,
 )
 
 
@@ -205,8 +274,8 @@ _HEARTBEATREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=215,
-  serialized_end=268,
+  serialized_start=304,
+  serialized_end=357,
 )
 
 
@@ -244,8 +313,8 @@ _HEARTBEATRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=271,
-  serialized_end=437,
+  serialized_start=360,
+  serialized_end=526,
 )
 
 
@@ -275,8 +344,8 @@ _ACCEPTCALLREQUEST = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=439,
-  serialized_end=475,
+  serialized_start=528,
+  serialized_end=564,
 )
 
 
@@ -306,12 +375,14 @@ _ACCEPTCALLRESPONSE = _descriptor.Descriptor(
   extension_ranges=[],
   oneofs=[
   ],
-  serialized_start=477,
-  serialized_end=515,
+  serialized_start=566,
+  serialized_end=604,
 )
 
 _HEARTBEATRESPONSE.fields_by_name['status'].enum_type = _HEARTBEATRESPONSE_HEARTBEATSTATUS
 _HEARTBEATRESPONSE_HEARTBEATSTATUS.containing_type = _HEARTBEATRESPONSE
+DESCRIPTOR.message_types_by_name['AddTaskRequest'] = _ADDTASKREQUEST
+DESCRIPTOR.message_types_by_name['AddTaskResponse'] = _ADDTASKRESPONSE
 DESCRIPTOR.message_types_by_name['GetAvailableAgentsRequest'] = _GETAVAILABLEAGENTSREQUEST
 DESCRIPTOR.message_types_by_name['GetAvailableAgentsResponse'] = _GETAVAILABLEAGENTSRESPONSE
 DESCRIPTOR.message_types_by_name['GetAgentIDFromRefRequest'] = _GETAGENTIDFROMREFREQUEST
@@ -320,6 +391,20 @@ DESCRIPTOR.message_types_by_name['HeartBeatRequest'] = _HEARTBEATREQUEST
 DESCRIPTOR.message_types_by_name['HeartBeatResponse'] = _HEARTBEATRESPONSE
 DESCRIPTOR.message_types_by_name['AcceptCallRequest'] = _ACCEPTCALLREQUEST
 DESCRIPTOR.message_types_by_name['AcceptCallResponse'] = _ACCEPTCALLRESPONSE
+
+AddTaskRequest = _reflection.GeneratedProtocolMessageType('AddTaskRequest', (_message.Message,), dict(
+  DESCRIPTOR = _ADDTASKREQUEST,
+  __module__ = 'agentmgmt_pb2'
+  # @@protoc_insertion_point(class_scope:grpc_types.AddTaskRequest)
+  ))
+_sym_db.RegisterMessage(AddTaskRequest)
+
+AddTaskResponse = _reflection.GeneratedProtocolMessageType('AddTaskResponse', (_message.Message,), dict(
+  DESCRIPTOR = _ADDTASKRESPONSE,
+  __module__ = 'agentmgmt_pb2'
+  # @@protoc_insertion_point(class_scope:grpc_types.AddTaskResponse)
+  ))
+_sym_db.RegisterMessage(AddTaskResponse)
 
 GetAvailableAgentsRequest = _reflection.GeneratedProtocolMessageType('GetAvailableAgentsRequest', (_message.Message,), dict(
   DESCRIPTOR = _GETAVAILABLEAGENTSREQUEST,
@@ -396,6 +481,11 @@ try:
       Args:
         channel: A grpc.Channel.
       """
+      self.AddTask = channel.unary_unary(
+          '/grpc_types.AgentMgmt/AddTask',
+          request_serializer=AddTaskRequest.SerializeToString,
+          response_deserializer=AddTaskResponse.FromString,
+          )
       self.GetAvailableAgents = channel.unary_unary(
           '/grpc_types.AgentMgmt/GetAvailableAgents',
           request_serializer=GetAvailableAgentsRequest.SerializeToString,
@@ -420,9 +510,14 @@ try:
 
   class AgentMgmtServicer(object):
 
-    def GetAvailableAgents(self, request, context):
+    def AddTask(self, request, context):
       """AgentMgmt service // Go uses CamelCase so use it for API calls
       """
+      context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+      context.set_details('Method not implemented!')
+      raise NotImplementedError('Method not implemented!')
+
+    def GetAvailableAgents(self, request, context):
       context.set_code(grpc.StatusCode.UNIMPLEMENTED)
       context.set_details('Method not implemented!')
       raise NotImplementedError('Method not implemented!')
@@ -445,6 +540,11 @@ try:
 
   def add_AgentMgmtServicer_to_server(servicer, server):
     rpc_method_handlers = {
+        'AddTask': grpc.unary_unary_rpc_method_handler(
+            servicer.AddTask,
+            request_deserializer=AddTaskRequest.FromString,
+            response_serializer=AddTaskResponse.SerializeToString,
+        ),
         'GetAvailableAgents': grpc.unary_unary_rpc_method_handler(
             servicer.GetAvailableAgents,
             request_deserializer=GetAvailableAgentsRequest.FromString,
@@ -477,9 +577,11 @@ try:
     It is recommended to use the GA API (classes and functions in this
     file not marked beta) for all further purposes. This class was generated
     only to ease transition from grpcio<0.15.0 to grpcio>=0.15.0."""
-    def GetAvailableAgents(self, request, context):
+    def AddTask(self, request, context):
       """AgentMgmt service // Go uses CamelCase so use it for API calls
       """
+      context.code(beta_interfaces.StatusCode.UNIMPLEMENTED)
+    def GetAvailableAgents(self, request, context):
       context.code(beta_interfaces.StatusCode.UNIMPLEMENTED)
     def GetAgentIDFromRef(self, request, context):
       context.code(beta_interfaces.StatusCode.UNIMPLEMENTED)
@@ -495,9 +597,12 @@ try:
     It is recommended to use the GA API (classes and functions in this
     file not marked beta) for all further purposes. This class was generated
     only to ease transition from grpcio<0.15.0 to grpcio>=0.15.0."""
-    def GetAvailableAgents(self, request, timeout, metadata=None, with_call=False, protocol_options=None):
+    def AddTask(self, request, timeout, metadata=None, with_call=False, protocol_options=None):
       """AgentMgmt service // Go uses CamelCase so use it for API calls
       """
+      raise NotImplementedError()
+    AddTask.future = None
+    def GetAvailableAgents(self, request, timeout, metadata=None, with_call=False, protocol_options=None):
       raise NotImplementedError()
     GetAvailableAgents.future = None
     def GetAgentIDFromRef(self, request, timeout, metadata=None, with_call=False, protocol_options=None):
@@ -519,18 +624,21 @@ try:
     generated only to ease transition from grpcio<0.15.0 to grpcio>=0.15.0"""
     request_deserializers = {
       ('grpc_types.AgentMgmt', 'AcceptCall'): AcceptCallRequest.FromString,
+      ('grpc_types.AgentMgmt', 'AddTask'): AddTaskRequest.FromString,
       ('grpc_types.AgentMgmt', 'GetAgentIDFromRef'): GetAgentIDFromRefRequest.FromString,
       ('grpc_types.AgentMgmt', 'GetAvailableAgents'): GetAvailableAgentsRequest.FromString,
       ('grpc_types.AgentMgmt', 'HeartBeat'): HeartBeatRequest.FromString,
     }
     response_serializers = {
       ('grpc_types.AgentMgmt', 'AcceptCall'): AcceptCallResponse.SerializeToString,
+      ('grpc_types.AgentMgmt', 'AddTask'): AddTaskResponse.SerializeToString,
       ('grpc_types.AgentMgmt', 'GetAgentIDFromRef'): GetAgentIDFromRefResponse.SerializeToString,
       ('grpc_types.AgentMgmt', 'GetAvailableAgents'): GetAvailableAgentsResponse.SerializeToString,
       ('grpc_types.AgentMgmt', 'HeartBeat'): HeartBeatResponse.SerializeToString,
     }
     method_implementations = {
       ('grpc_types.AgentMgmt', 'AcceptCall'): face_utilities.unary_unary_inline(servicer.AcceptCall),
+      ('grpc_types.AgentMgmt', 'AddTask'): face_utilities.unary_unary_inline(servicer.AddTask),
       ('grpc_types.AgentMgmt', 'GetAgentIDFromRef'): face_utilities.unary_unary_inline(servicer.GetAgentIDFromRef),
       ('grpc_types.AgentMgmt', 'GetAvailableAgents'): face_utilities.unary_unary_inline(servicer.GetAvailableAgents),
       ('grpc_types.AgentMgmt', 'HeartBeat'): face_utilities.unary_unary_inline(servicer.HeartBeat),
@@ -547,18 +655,21 @@ try:
     generated only to ease transition from grpcio<0.15.0 to grpcio>=0.15.0"""
     request_serializers = {
       ('grpc_types.AgentMgmt', 'AcceptCall'): AcceptCallRequest.SerializeToString,
+      ('grpc_types.AgentMgmt', 'AddTask'): AddTaskRequest.SerializeToString,
       ('grpc_types.AgentMgmt', 'GetAgentIDFromRef'): GetAgentIDFromRefRequest.SerializeToString,
       ('grpc_types.AgentMgmt', 'GetAvailableAgents'): GetAvailableAgentsRequest.SerializeToString,
       ('grpc_types.AgentMgmt', 'HeartBeat'): HeartBeatRequest.SerializeToString,
     }
     response_deserializers = {
       ('grpc_types.AgentMgmt', 'AcceptCall'): AcceptCallResponse.FromString,
+      ('grpc_types.AgentMgmt', 'AddTask'): AddTaskResponse.FromString,
       ('grpc_types.AgentMgmt', 'GetAgentIDFromRef'): GetAgentIDFromRefResponse.FromString,
       ('grpc_types.AgentMgmt', 'GetAvailableAgents'): GetAvailableAgentsResponse.FromString,
       ('grpc_types.AgentMgmt', 'HeartBeat'): HeartBeatResponse.FromString,
     }
     cardinalities = {
       'AcceptCall': cardinality.Cardinality.UNARY_UNARY,
+      'AddTask': cardinality.Cardinality.UNARY_UNARY,
       'GetAgentIDFromRef': cardinality.Cardinality.UNARY_UNARY,
       'GetAvailableAgents': cardinality.Cardinality.UNARY_UNARY,
       'HeartBeat': cardinality.Cardinality.UNARY_UNARY,

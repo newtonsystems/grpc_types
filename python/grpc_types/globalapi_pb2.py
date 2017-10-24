@@ -22,7 +22,7 @@ DESCRIPTOR = _descriptor.FileDescriptor(
   name='globalapi.proto',
   package='grpc_types',
   syntax='proto3',
-  serialized_pb=_b('\n\x0fglobalapi.proto\x12\ngrpc_types\x1a\x0bhello.proto\x1a\x0bworld.proto\x1a\x0f\x61gentmgmt.proto2\xf7\x03\n\tGlobalAPI\x12\x41\n\x08sayHello\x12\x18.grpc_types.HelloRequest\x1a\x19.grpc_types.HelloResponse\"\x00\x12\x41\n\x08sayWorld\x12\x18.grpc_types.WorldRequest\x1a\x19.grpc_types.WorldResponse\"\x00\x12\x65\n\x12GetAvailableAgents\x12%.grpc_types.GetAvailableAgentsRequest\x1a&.grpc_types.GetAvailableAgentsResponse\"\x00\x12\x62\n\x11GetAgentIDFromRef\x12$.grpc_types.GetAgentIDFromRefRequest\x1a%.grpc_types.GetAgentIDFromRefResponse\"\x00\x12J\n\tHeartBeat\x12\x1c.grpc_types.HeartBeatRequest\x1a\x1d.grpc_types.HeartBeatResponse\"\x00\x12M\n\nAcceptCall\x12\x1d.grpc_types.AcceptCallRequest\x1a\x1e.grpc_types.AcceptCallResponse\"\x00\x62\x06proto3')
+  serialized_pb=_b('\n\x0fglobalapi.proto\x12\ngrpc_types\x1a\x0bhello.proto\x1a\x0bworld.proto\x1a\x0f\x61gentmgmt.proto2\xbd\x04\n\tGlobalAPI\x12\x41\n\x08sayHello\x12\x18.grpc_types.HelloRequest\x1a\x19.grpc_types.HelloResponse\"\x00\x12\x41\n\x08sayWorld\x12\x18.grpc_types.WorldRequest\x1a\x19.grpc_types.WorldResponse\"\x00\x12\x44\n\x07\x41\x64\x64Task\x12\x1a.grpc_types.AddTaskRequest\x1a\x1b.grpc_types.AddTaskResponse\"\x00\x12\x65\n\x12GetAvailableAgents\x12%.grpc_types.GetAvailableAgentsRequest\x1a&.grpc_types.GetAvailableAgentsResponse\"\x00\x12\x62\n\x11GetAgentIDFromRef\x12$.grpc_types.GetAgentIDFromRefRequest\x1a%.grpc_types.GetAgentIDFromRefResponse\"\x00\x12J\n\tHeartBeat\x12\x1c.grpc_types.HeartBeatRequest\x1a\x1d.grpc_types.HeartBeatResponse\"\x00\x12M\n\nAcceptCall\x12\x1d.grpc_types.AcceptCallRequest\x1a\x1e.grpc_types.AcceptCallResponse\"\x00\x62\x06proto3')
   ,
   dependencies=[hello__pb2.DESCRIPTOR,world__pb2.DESCRIPTOR,agentmgmt__pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
@@ -62,6 +62,11 @@ try:
           '/grpc_types.GlobalAPI/sayWorld',
           request_serializer=world__pb2.WorldRequest.SerializeToString,
           response_deserializer=world__pb2.WorldResponse.FromString,
+          )
+      self.AddTask = channel.unary_unary(
+          '/grpc_types.GlobalAPI/AddTask',
+          request_serializer=agentmgmt__pb2.AddTaskRequest.SerializeToString,
+          response_deserializer=agentmgmt__pb2.AddTaskResponse.FromString,
           )
       self.GetAvailableAgents = channel.unary_unary(
           '/grpc_types.GlobalAPI/GetAvailableAgents',
@@ -103,6 +108,11 @@ try:
       context.set_details('Method not implemented!')
       raise NotImplementedError('Method not implemented!')
 
+    def AddTask(self, request, context):
+      context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+      context.set_details('Method not implemented!')
+      raise NotImplementedError('Method not implemented!')
+
     def GetAvailableAgents(self, request, context):
       context.set_code(grpc.StatusCode.UNIMPLEMENTED)
       context.set_details('Method not implemented!')
@@ -135,6 +145,11 @@ try:
             servicer.sayWorld,
             request_deserializer=world__pb2.WorldRequest.FromString,
             response_serializer=world__pb2.WorldResponse.SerializeToString,
+        ),
+        'AddTask': grpc.unary_unary_rpc_method_handler(
+            servicer.AddTask,
+            request_deserializer=agentmgmt__pb2.AddTaskRequest.FromString,
+            response_serializer=agentmgmt__pb2.AddTaskResponse.SerializeToString,
         ),
         'GetAvailableAgents': grpc.unary_unary_rpc_method_handler(
             servicer.GetAvailableAgents,
@@ -178,6 +193,8 @@ try:
       context.code(beta_interfaces.StatusCode.UNIMPLEMENTED)
     def sayWorld(self, request, context):
       context.code(beta_interfaces.StatusCode.UNIMPLEMENTED)
+    def AddTask(self, request, context):
+      context.code(beta_interfaces.StatusCode.UNIMPLEMENTED)
     def GetAvailableAgents(self, request, context):
       context.code(beta_interfaces.StatusCode.UNIMPLEMENTED)
     def GetAgentIDFromRef(self, request, context):
@@ -206,6 +223,9 @@ try:
     def sayWorld(self, request, timeout, metadata=None, with_call=False, protocol_options=None):
       raise NotImplementedError()
     sayWorld.future = None
+    def AddTask(self, request, timeout, metadata=None, with_call=False, protocol_options=None):
+      raise NotImplementedError()
+    AddTask.future = None
     def GetAvailableAgents(self, request, timeout, metadata=None, with_call=False, protocol_options=None):
       raise NotImplementedError()
     GetAvailableAgents.future = None
@@ -228,6 +248,7 @@ try:
     generated only to ease transition from grpcio<0.15.0 to grpcio>=0.15.0"""
     request_deserializers = {
       ('grpc_types.GlobalAPI', 'AcceptCall'): agentmgmt__pb2.AcceptCallRequest.FromString,
+      ('grpc_types.GlobalAPI', 'AddTask'): agentmgmt__pb2.AddTaskRequest.FromString,
       ('grpc_types.GlobalAPI', 'GetAgentIDFromRef'): agentmgmt__pb2.GetAgentIDFromRefRequest.FromString,
       ('grpc_types.GlobalAPI', 'GetAvailableAgents'): agentmgmt__pb2.GetAvailableAgentsRequest.FromString,
       ('grpc_types.GlobalAPI', 'HeartBeat'): agentmgmt__pb2.HeartBeatRequest.FromString,
@@ -236,6 +257,7 @@ try:
     }
     response_serializers = {
       ('grpc_types.GlobalAPI', 'AcceptCall'): agentmgmt__pb2.AcceptCallResponse.SerializeToString,
+      ('grpc_types.GlobalAPI', 'AddTask'): agentmgmt__pb2.AddTaskResponse.SerializeToString,
       ('grpc_types.GlobalAPI', 'GetAgentIDFromRef'): agentmgmt__pb2.GetAgentIDFromRefResponse.SerializeToString,
       ('grpc_types.GlobalAPI', 'GetAvailableAgents'): agentmgmt__pb2.GetAvailableAgentsResponse.SerializeToString,
       ('grpc_types.GlobalAPI', 'HeartBeat'): agentmgmt__pb2.HeartBeatResponse.SerializeToString,
@@ -244,6 +266,7 @@ try:
     }
     method_implementations = {
       ('grpc_types.GlobalAPI', 'AcceptCall'): face_utilities.unary_unary_inline(servicer.AcceptCall),
+      ('grpc_types.GlobalAPI', 'AddTask'): face_utilities.unary_unary_inline(servicer.AddTask),
       ('grpc_types.GlobalAPI', 'GetAgentIDFromRef'): face_utilities.unary_unary_inline(servicer.GetAgentIDFromRef),
       ('grpc_types.GlobalAPI', 'GetAvailableAgents'): face_utilities.unary_unary_inline(servicer.GetAvailableAgents),
       ('grpc_types.GlobalAPI', 'HeartBeat'): face_utilities.unary_unary_inline(servicer.HeartBeat),
@@ -262,6 +285,7 @@ try:
     generated only to ease transition from grpcio<0.15.0 to grpcio>=0.15.0"""
     request_serializers = {
       ('grpc_types.GlobalAPI', 'AcceptCall'): agentmgmt__pb2.AcceptCallRequest.SerializeToString,
+      ('grpc_types.GlobalAPI', 'AddTask'): agentmgmt__pb2.AddTaskRequest.SerializeToString,
       ('grpc_types.GlobalAPI', 'GetAgentIDFromRef'): agentmgmt__pb2.GetAgentIDFromRefRequest.SerializeToString,
       ('grpc_types.GlobalAPI', 'GetAvailableAgents'): agentmgmt__pb2.GetAvailableAgentsRequest.SerializeToString,
       ('grpc_types.GlobalAPI', 'HeartBeat'): agentmgmt__pb2.HeartBeatRequest.SerializeToString,
@@ -270,6 +294,7 @@ try:
     }
     response_deserializers = {
       ('grpc_types.GlobalAPI', 'AcceptCall'): agentmgmt__pb2.AcceptCallResponse.FromString,
+      ('grpc_types.GlobalAPI', 'AddTask'): agentmgmt__pb2.AddTaskResponse.FromString,
       ('grpc_types.GlobalAPI', 'GetAgentIDFromRef'): agentmgmt__pb2.GetAgentIDFromRefResponse.FromString,
       ('grpc_types.GlobalAPI', 'GetAvailableAgents'): agentmgmt__pb2.GetAvailableAgentsResponse.FromString,
       ('grpc_types.GlobalAPI', 'HeartBeat'): agentmgmt__pb2.HeartBeatResponse.FromString,
@@ -278,6 +303,7 @@ try:
     }
     cardinalities = {
       'AcceptCall': cardinality.Cardinality.UNARY_UNARY,
+      'AddTask': cardinality.Cardinality.UNARY_UNARY,
       'GetAgentIDFromRef': cardinality.Cardinality.UNARY_UNARY,
       'GetAvailableAgents': cardinality.Cardinality.UNARY_UNARY,
       'HeartBeat': cardinality.Cardinality.UNARY_UNARY,

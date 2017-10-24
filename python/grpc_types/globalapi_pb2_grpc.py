@@ -28,6 +28,11 @@ class GlobalAPIStub(object):
         request_serializer=world__pb2.WorldRequest.SerializeToString,
         response_deserializer=world__pb2.WorldResponse.FromString,
         )
+    self.AddTask = channel.unary_unary(
+        '/grpc_types.GlobalAPI/AddTask',
+        request_serializer=agentmgmt__pb2.AddTaskRequest.SerializeToString,
+        response_deserializer=agentmgmt__pb2.AddTaskResponse.FromString,
+        )
     self.GetAvailableAgents = channel.unary_unary(
         '/grpc_types.GlobalAPI/GetAvailableAgents',
         request_serializer=agentmgmt__pb2.GetAvailableAgentsRequest.SerializeToString,
@@ -68,6 +73,11 @@ class GlobalAPIServicer(object):
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
+  def AddTask(self, request, context):
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
   def GetAvailableAgents(self, request, context):
     context.set_code(grpc.StatusCode.UNIMPLEMENTED)
     context.set_details('Method not implemented!')
@@ -100,6 +110,11 @@ def add_GlobalAPIServicer_to_server(servicer, server):
           servicer.sayWorld,
           request_deserializer=world__pb2.WorldRequest.FromString,
           response_serializer=world__pb2.WorldResponse.SerializeToString,
+      ),
+      'AddTask': grpc.unary_unary_rpc_method_handler(
+          servicer.AddTask,
+          request_deserializer=agentmgmt__pb2.AddTaskRequest.FromString,
+          response_serializer=agentmgmt__pb2.AddTaskResponse.SerializeToString,
       ),
       'GetAvailableAgents': grpc.unary_unary_rpc_method_handler(
           servicer.GetAvailableAgents,
