@@ -8,6 +8,7 @@ It is generated from these files:
 	agentmgmt.proto
 	globalapi.proto
 	hello.proto
+	ping.proto
 	world.proto
 
 It has these top-level messages:
@@ -23,6 +24,8 @@ It has these top-level messages:
 	AcceptCallResponse
 	HelloRequest
 	HelloResponse
+	PingRequest
+	PingResponse
 	WorldRequest
 	WorldResponse
 */

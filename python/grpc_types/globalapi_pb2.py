@@ -16,15 +16,16 @@ _sym_db = _symbol_database.Default()
 import hello_pb2 as hello__pb2
 import world_pb2 as world__pb2
 import agentmgmt_pb2 as agentmgmt__pb2
+import ping_pb2 as ping__pb2
 
 
 DESCRIPTOR = _descriptor.FileDescriptor(
   name='globalapi.proto',
   package='grpc_types',
   syntax='proto3',
-  serialized_pb=_b('\n\x0fglobalapi.proto\x12\ngrpc_types\x1a\x0bhello.proto\x1a\x0bworld.proto\x1a\x0f\x61gentmgmt.proto2\xbd\x04\n\tGlobalAPI\x12\x41\n\x08sayHello\x12\x18.grpc_types.HelloRequest\x1a\x19.grpc_types.HelloResponse\"\x00\x12\x41\n\x08sayWorld\x12\x18.grpc_types.WorldRequest\x1a\x19.grpc_types.WorldResponse\"\x00\x12\x44\n\x07\x41\x64\x64Task\x12\x1a.grpc_types.AddTaskRequest\x1a\x1b.grpc_types.AddTaskResponse\"\x00\x12\x65\n\x12GetAvailableAgents\x12%.grpc_types.GetAvailableAgentsRequest\x1a&.grpc_types.GetAvailableAgentsResponse\"\x00\x12\x62\n\x11GetAgentIDFromRef\x12$.grpc_types.GetAgentIDFromRefRequest\x1a%.grpc_types.GetAgentIDFromRefResponse\"\x00\x12J\n\tHeartBeat\x12\x1c.grpc_types.HeartBeatRequest\x1a\x1d.grpc_types.HeartBeatResponse\"\x00\x12M\n\nAcceptCall\x12\x1d.grpc_types.AcceptCallRequest\x1a\x1e.grpc_types.AcceptCallResponse\"\x00\x62\x06proto3')
+  serialized_pb=_b('\n\x0fglobalapi.proto\x12\ngrpc_types\x1a\x0bhello.proto\x1a\x0bworld.proto\x1a\x0f\x61gentmgmt.proto\x1a\nping.proto2\xfa\x04\n\tGlobalAPI\x12\x41\n\x08sayHello\x12\x18.grpc_types.HelloRequest\x1a\x19.grpc_types.HelloResponse\"\x00\x12\x41\n\x08sayWorld\x12\x18.grpc_types.WorldRequest\x1a\x19.grpc_types.WorldResponse\"\x00\x12\x44\n\x07\x41\x64\x64Task\x12\x1a.grpc_types.AddTaskRequest\x1a\x1b.grpc_types.AddTaskResponse\"\x00\x12\x65\n\x12GetAvailableAgents\x12%.grpc_types.GetAvailableAgentsRequest\x1a&.grpc_types.GetAvailableAgentsResponse\"\x00\x12\x62\n\x11GetAgentIDFromRef\x12$.grpc_types.GetAgentIDFromRefRequest\x1a%.grpc_types.GetAgentIDFromRefResponse\"\x00\x12J\n\tHeartBeat\x12\x1c.grpc_types.HeartBeatRequest\x1a\x1d.grpc_types.HeartBeatResponse\"\x00\x12M\n\nAcceptCall\x12\x1d.grpc_types.AcceptCallRequest\x1a\x1e.grpc_types.AcceptCallResponse\"\x00\x12;\n\x04Ping\x12\x17.grpc_types.PingRequest\x1a\x18.grpc_types.PingResponse\"\x00\x62\x06proto3')
   ,
-  dependencies=[hello__pb2.DESCRIPTOR,world__pb2.DESCRIPTOR,agentmgmt__pb2.DESCRIPTOR,])
+  dependencies=[hello__pb2.DESCRIPTOR,world__pb2.DESCRIPTOR,agentmgmt__pb2.DESCRIPTOR,ping__pb2.DESCRIPTOR,])
 _sym_db.RegisterFileDescriptor(DESCRIPTOR)
 
 
@@ -88,6 +89,11 @@ try:
           request_serializer=agentmgmt__pb2.AcceptCallRequest.SerializeToString,
           response_deserializer=agentmgmt__pb2.AcceptCallResponse.FromString,
           )
+      self.Ping = channel.unary_unary(
+          '/grpc_types.GlobalAPI/Ping',
+          request_serializer=ping__pb2.PingRequest.SerializeToString,
+          response_deserializer=ping__pb2.PingResponse.FromString,
+          )
 
 
   class GlobalAPIServicer(object):
@@ -133,6 +139,11 @@ try:
       context.set_details('Method not implemented!')
       raise NotImplementedError('Method not implemented!')
 
+    def Ping(self, request, context):
+      context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+      context.set_details('Method not implemented!')
+      raise NotImplementedError('Method not implemented!')
+
 
   def add_GlobalAPIServicer_to_server(servicer, server):
     rpc_method_handlers = {
@@ -171,6 +182,11 @@ try:
             request_deserializer=agentmgmt__pb2.AcceptCallRequest.FromString,
             response_serializer=agentmgmt__pb2.AcceptCallResponse.SerializeToString,
         ),
+        'Ping': grpc.unary_unary_rpc_method_handler(
+            servicer.Ping,
+            request_deserializer=ping__pb2.PingRequest.FromString,
+            response_serializer=ping__pb2.PingResponse.SerializeToString,
+        ),
     }
     generic_handler = grpc.method_handlers_generic_handler(
         'grpc_types.GlobalAPI', rpc_method_handlers)
@@ -202,6 +218,8 @@ try:
     def HeartBeat(self, request, context):
       context.code(beta_interfaces.StatusCode.UNIMPLEMENTED)
     def AcceptCall(self, request, context):
+      context.code(beta_interfaces.StatusCode.UNIMPLEMENTED)
+    def Ping(self, request, context):
       context.code(beta_interfaces.StatusCode.UNIMPLEMENTED)
 
 
@@ -238,6 +256,9 @@ try:
     def AcceptCall(self, request, timeout, metadata=None, with_call=False, protocol_options=None):
       raise NotImplementedError()
     AcceptCall.future = None
+    def Ping(self, request, timeout, metadata=None, with_call=False, protocol_options=None):
+      raise NotImplementedError()
+    Ping.future = None
 
 
   def beta_create_GlobalAPI_server(servicer, pool=None, pool_size=None, default_timeout=None, maximum_timeout=None):
@@ -252,6 +273,7 @@ try:
       ('grpc_types.GlobalAPI', 'GetAgentIDFromRef'): agentmgmt__pb2.GetAgentIDFromRefRequest.FromString,
       ('grpc_types.GlobalAPI', 'GetAvailableAgents'): agentmgmt__pb2.GetAvailableAgentsRequest.FromString,
       ('grpc_types.GlobalAPI', 'HeartBeat'): agentmgmt__pb2.HeartBeatRequest.FromString,
+      ('grpc_types.GlobalAPI', 'Ping'): ping__pb2.PingRequest.FromString,
       ('grpc_types.GlobalAPI', 'sayHello'): hello__pb2.HelloRequest.FromString,
       ('grpc_types.GlobalAPI', 'sayWorld'): world__pb2.WorldRequest.FromString,
     }
@@ -261,6 +283,7 @@ try:
       ('grpc_types.GlobalAPI', 'GetAgentIDFromRef'): agentmgmt__pb2.GetAgentIDFromRefResponse.SerializeToString,
       ('grpc_types.GlobalAPI', 'GetAvailableAgents'): agentmgmt__pb2.GetAvailableAgentsResponse.SerializeToString,
       ('grpc_types.GlobalAPI', 'HeartBeat'): agentmgmt__pb2.HeartBeatResponse.SerializeToString,
+      ('grpc_types.GlobalAPI', 'Ping'): ping__pb2.PingResponse.SerializeToString,
       ('grpc_types.GlobalAPI', 'sayHello'): hello__pb2.HelloResponse.SerializeToString,
       ('grpc_types.GlobalAPI', 'sayWorld'): world__pb2.WorldResponse.SerializeToString,
     }
@@ -270,6 +293,7 @@ try:
       ('grpc_types.GlobalAPI', 'GetAgentIDFromRef'): face_utilities.unary_unary_inline(servicer.GetAgentIDFromRef),
       ('grpc_types.GlobalAPI', 'GetAvailableAgents'): face_utilities.unary_unary_inline(servicer.GetAvailableAgents),
       ('grpc_types.GlobalAPI', 'HeartBeat'): face_utilities.unary_unary_inline(servicer.HeartBeat),
+      ('grpc_types.GlobalAPI', 'Ping'): face_utilities.unary_unary_inline(servicer.Ping),
       ('grpc_types.GlobalAPI', 'sayHello'): face_utilities.unary_unary_inline(servicer.sayHello),
       ('grpc_types.GlobalAPI', 'sayWorld'): face_utilities.unary_unary_inline(servicer.sayWorld),
     }
@@ -289,6 +313,7 @@ try:
       ('grpc_types.GlobalAPI', 'GetAgentIDFromRef'): agentmgmt__pb2.GetAgentIDFromRefRequest.SerializeToString,
       ('grpc_types.GlobalAPI', 'GetAvailableAgents'): agentmgmt__pb2.GetAvailableAgentsRequest.SerializeToString,
       ('grpc_types.GlobalAPI', 'HeartBeat'): agentmgmt__pb2.HeartBeatRequest.SerializeToString,
+      ('grpc_types.GlobalAPI', 'Ping'): ping__pb2.PingRequest.SerializeToString,
       ('grpc_types.GlobalAPI', 'sayHello'): hello__pb2.HelloRequest.SerializeToString,
       ('grpc_types.GlobalAPI', 'sayWorld'): world__pb2.WorldRequest.SerializeToString,
     }
@@ -298,6 +323,7 @@ try:
       ('grpc_types.GlobalAPI', 'GetAgentIDFromRef'): agentmgmt__pb2.GetAgentIDFromRefResponse.FromString,
       ('grpc_types.GlobalAPI', 'GetAvailableAgents'): agentmgmt__pb2.GetAvailableAgentsResponse.FromString,
       ('grpc_types.GlobalAPI', 'HeartBeat'): agentmgmt__pb2.HeartBeatResponse.FromString,
+      ('grpc_types.GlobalAPI', 'Ping'): ping__pb2.PingResponse.FromString,
       ('grpc_types.GlobalAPI', 'sayHello'): hello__pb2.HelloResponse.FromString,
       ('grpc_types.GlobalAPI', 'sayWorld'): world__pb2.WorldResponse.FromString,
     }
@@ -307,6 +333,7 @@ try:
       'GetAgentIDFromRef': cardinality.Cardinality.UNARY_UNARY,
       'GetAvailableAgents': cardinality.Cardinality.UNARY_UNARY,
       'HeartBeat': cardinality.Cardinality.UNARY_UNARY,
+      'Ping': cardinality.Cardinality.UNARY_UNARY,
       'sayHello': cardinality.Cardinality.UNARY_UNARY,
       'sayWorld': cardinality.Cardinality.UNARY_UNARY,
     }

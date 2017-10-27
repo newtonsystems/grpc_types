@@ -24,7 +24,7 @@ type WorldRequest struct {
 func (m *WorldRequest) Reset()                    { *m = WorldRequest{} }
 func (m *WorldRequest) String() string            { return proto.CompactTextString(m) }
 func (*WorldRequest) ProtoMessage()               {}
-func (*WorldRequest) Descriptor() ([]byte, []int) { return fileDescriptor3, []int{0} }
+func (*WorldRequest) Descriptor() ([]byte, []int) { return fileDescriptor4, []int{0} }
 
 func (m *WorldRequest) GetMessage() string {
 	if m != nil {
@@ -41,7 +41,7 @@ type WorldResponse struct {
 func (m *WorldResponse) Reset()                    { *m = WorldResponse{} }
 func (m *WorldResponse) String() string            { return proto.CompactTextString(m) }
 func (*WorldResponse) ProtoMessage()               {}
-func (*WorldResponse) Descriptor() ([]byte, []int) { return fileDescriptor3, []int{1} }
+func (*WorldResponse) Descriptor() ([]byte, []int) { return fileDescriptor4, []int{1} }
 
 func (m *WorldResponse) GetMessage() string {
 	if m != nil {
@@ -129,9 +129,9 @@ var _World_serviceDesc = grpc.ServiceDesc{
 	Metadata: "world.proto",
 }
 
-func init() { proto.RegisterFile("world.proto", fileDescriptor3) }
+func init() { proto.RegisterFile("world.proto", fileDescriptor4) }
 
-var fileDescriptor3 = []byte{
+var fileDescriptor4 = []byte{
 	// 133 bytes of a gzipped FileDescriptorProto
 	0x1f, 0x8b, 0x08, 0x00, 0x00, 0x00, 0x00, 0x00, 0x02, 0xff, 0xe2, 0xe2, 0x2e, 0xcf, 0x2f, 0xca,
 	0x49, 0xd1, 0x2b, 0x28, 0xca, 0x2f, 0xc9, 0x17, 0xe2, 0x4a, 0x2f, 0x2a, 0x48, 0x8e, 0x2f, 0xa9,
