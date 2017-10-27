@@ -3,6 +3,7 @@ import grpc
 
 import agentmgmt_pb2 as agentmgmt__pb2
 import hello_pb2 as hello__pb2
+import ping_pb2 as ping__pb2
 import world_pb2 as world__pb2
 
 
@@ -53,6 +54,11 @@ class GlobalAPIStub(object):
         request_serializer=agentmgmt__pb2.AcceptCallRequest.SerializeToString,
         response_deserializer=agentmgmt__pb2.AcceptCallResponse.FromString,
         )
+    self.Ping = channel.unary_unary(
+        '/grpc_types.GlobalAPI/Ping',
+        request_serializer=ping__pb2.PingRequest.SerializeToString,
+        response_deserializer=ping__pb2.PingResponse.FromString,
+        )
 
 
 class GlobalAPIServicer(object):
@@ -98,6 +104,11 @@ class GlobalAPIServicer(object):
     context.set_details('Method not implemented!')
     raise NotImplementedError('Method not implemented!')
 
+  def Ping(self, request, context):
+    context.set_code(grpc.StatusCode.UNIMPLEMENTED)
+    context.set_details('Method not implemented!')
+    raise NotImplementedError('Method not implemented!')
+
 
 def add_GlobalAPIServicer_to_server(servicer, server):
   rpc_method_handlers = {
@@ -135,6 +146,11 @@ def add_GlobalAPIServicer_to_server(servicer, server):
           servicer.AcceptCall,
           request_deserializer=agentmgmt__pb2.AcceptCallRequest.FromString,
           response_serializer=agentmgmt__pb2.AcceptCallResponse.SerializeToString,
+      ),
+      'Ping': grpc.unary_unary_rpc_method_handler(
+          servicer.Ping,
+          request_deserializer=ping__pb2.PingRequest.FromString,
+          response_serializer=ping__pb2.PingResponse.SerializeToString,
       ),
   }
   generic_handler = grpc.method_handlers_generic_handler(
